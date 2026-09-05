@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bdhviu3pxicx8"
+path="res://.godot/imported/mercado livre entrega - QuickSounds.com.mp3-c3c43432f02c693cbbf773796597d95e.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/mercado livre entrega - QuickSounds.com.mp3"
+dest_files=["res://.godot/imported/mercado livre entrega - QuickSounds.com.mp3-c3c43432f02c693cbbf773796597d95e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

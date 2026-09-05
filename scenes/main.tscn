@@ -1,0 +1,428 @@
+[gd_scene format=3 uid="uid://k0be3k7kpmn6"]
+
+[ext_resource type="Script" uid="uid://7dvxqllb6634" path="res://scripts/main.gd" id="1_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://bbrnnu73t40c2" path="res://scenes/player.tscn" id="1_o5qli"]
+[ext_resource type="Script" uid="uid://c0eh7mou0efqp" path="res://scripts/camera_3d.gd" id="3_a8y0u"]
+[ext_resource type="PackedScene" uid="uid://c6vt2v3hnsknu" path="res://scenes/gate.tscn" id="4_o6xl0"]
+[ext_resource type="PackedScene" uid="uid://dl4u7sjmbamyp" path="res://scenes/dog.tscn" id="5_tbgi4"]
+[ext_resource type="Texture2D" uid="uid://c85jwh5ump82m" path="res://assets/prototype/Dark/texture_08.png" id="7_jkv2x"]
+[ext_resource type="Material" uid="uid://v07f7lrkcjde" path="res://resources/obstacule_material.tres" id="8_0ld40"]
+[ext_resource type="Texture2D" uid="uid://rfqpraqtqvri" path="res://assets/prototype/Green/texture_08.png" id="8_muem4"]
+[ext_resource type="Script" uid="uid://bmmbikveeji1g" path="res://scripts/states/state_machine.gd" id="9_choun"]
+[ext_resource type="Texture2D" uid="uid://ds8cpqyl4qqd3" path="res://assets/prototype/Red/texture_08.png" id="10_gqmmt"]
+[ext_resource type="Material" uid="uid://c86t3a4cwcwdb" path="res://resources/portal_material.tres" id="11_yc10j"]
+[ext_resource type="Script" uid="uid://ct2hukm0k3e2o" path="res://scripts/components/camera_component.gd" id="12_a8y0u"]
+[ext_resource type="Script" uid="uid://fwq1s2avykcx" path="res://scripts/components/input_component.gd" id="12_eb6dy"]
+[ext_resource type="PackedScene" uid="uid://r3ajoq8ka77o" path="res://scenes/car.tscn" id="12_gqmmt"]
+[ext_resource type="Texture2D" uid="uid://dvi1o3lrfpclu" path="res://assets/prototype/Dark/texture_07.png" id="12_yc10j"]
+[ext_resource type="PackedScene" uid="uid://2qev34ncb7kl" path="res://scenes/mailman.tscn" id="16_jbj1t"]
+[ext_resource type="PackedScene" uid="uid://cbbyw4hppavto" path="res://scenes/after_accident.tscn" id="17_pm3ni"]
+[ext_resource type="Script" uid="uid://bh7f1jgeeshi7" path="res://scripts/states/game/paused.gd" id="18_2wyq8"]
+[ext_resource type="Script" uid="uid://chhs30ss1xuo7" path="res://scripts/components/world_environment.gd" id="19_jscy8"]
+[ext_resource type="Script" uid="uid://rt7ypd85486v" path="res://scripts/states/game/in_house.gd" id="19_og1vs"]
+[ext_resource type="Script" uid="uid://dhx5h08sjqqru" path="res://scripts/states/game/outside_house.gd" id="21_vxglm"]
+[ext_resource type="Script" uid="uid://b5c23hufsq877" path="res://scripts/sequences/mailmain_sequence.gd" id="24_y6deb"]
+[ext_resource type="Script" uid="uid://d3nqnrvqwq52s" path="res://scripts/sequences/dog_escape_sequence.gd" id="26_2wyq8"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jscy8"]
+sky_top_color = Color(0, 0.45451397, 0.8017731, 1)
+sky_horizon_color = Color(0.7936214, 0.9241497, 0.9839707, 1)
+ground_bottom_color = Color(0.20784314, 0.21960784, 0.22745098, 1)
+ground_horizon_color = Color(0.62352943, 0.8627451, 0.96862745, 1)
+
+[sub_resource type="Sky" id="Sky_yc10j"]
+sky_material = SubResource("ProceduralSkyMaterial_jscy8")
+
+[sub_resource type="Environment" id="Environment_sugp2"]
+background_mode = 2
+sky = SubResource("Sky_yc10j")
+ssr_enabled = true
+ssao_enabled = true
+ssil_enabled = true
+glow_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_311cg"]
+size = Vector3(4.786865, 1, 2.5146484)
+
+[sub_resource type="Curve3D" id="Curve3D_y6deb"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -1.765, 0, -15, 0, 0, 0, 0, 0, 0, 15, 0, -15, 0, 0, 0, 0, 0, 0, 15, 0.127, 2.91),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1xwnf"]
+albedo_texture = ExtResource("7_jkv2x")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0ld40"]
+albedo_texture = ExtResource("8_muem4")
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_1xwnf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jscy8"]
+albedo_texture = ExtResource("10_gqmmt")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gqmmt"]
+size = Vector3(0.10067749, 1.1766357, 1.5472412)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1xwnf"]
+size = Vector3(0.10067749, 1.1766357, 1.5472412)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0ld40"]
+size = Vector3(0.10067749, 1.3701172, 6.669922)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pm3ni"]
+albedo_texture = ExtResource("12_yc10j")
+uv1_triplanar = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_og1vs"]
+size = Vector3(1.9746094, 2, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rsxcb"]
+size = Vector3(1.4241791, 1, 2.6660156)
+
+[node name="Main" type="Node3D" unique_id=1201746872]
+script = ExtResource("1_jyhfs")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1584887193]
+unique_name_in_owner = true
+environment = SubResource("Environment_sugp2")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1414444004]
+unique_name_in_owner = true
+transform = Transform3D(0.9099613, 0.14726046, -0.38766587, 0, 0.93482566, 0.35510698, 0.41469324, -0.32313362, 0.85065514, -31.662035, 6.565236, 0.0024986267)
+shadow_enabled = true
+
+[node name="PlayerGroup" type="Node" parent="." unique_id=2091826681]
+
+[node name="Player" parent="PlayerGroup" unique_id=162577266 instance=ExtResource("1_o5qli")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.47386, 0, 3.291171)
+
+[node name="SpringArm3D" type="SpringArm3D" parent="PlayerGroup/Player" unique_id=147594454]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 1.7025704, 0)
+spring_length = 3.0
+
+[node name="Camera3D" type="Camera3D" parent="PlayerGroup/Player/SpringArm3D" unique_id=1285880669 node_paths=PackedStringArray("player")]
+unique_name_in_owner = true
+physics_interpolation_mode = 1
+script = ExtResource("3_a8y0u")
+player = NodePath("../..")
+
+[node name="NPCs" type="Node" parent="." unique_id=1776867597]
+
+[node name="Dog" parent="NPCs" unique_id=1692485038 instance=ExtResource("5_tbgi4")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.95744, 0, -3.9563627)
+
+[node name="DogArea" type="Area3D" parent="NPCs" unique_id=645542927]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.4822483, 0, -10.639389)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPCs/DogArea" unique_id=1694628877]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.005663, 0.51389945, 6.558277)
+shape = SubResource("BoxShape3D_311cg")
+
+[node name="MailmanPath3D" type="Path3D" parent="NPCs" unique_id=1078573912]
+transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, -45.528603, 0, -2.536598)
+curve = SubResource("Curve3D_y6deb")
+
+[node name="MailmanPathFollow3D" type="PathFollow3D" parent="NPCs/MailmanPath3D" unique_id=1270223336]
+unique_name_in_owner = true
+transform = Transform3D(-4.3710667e-08, 0, -0.99998254, 0, 0.99999267, 0, 0.9999835, 0, -4.3710624e-08, -1.765, 0, -15)
+
+[node name="Mailman" parent="NPCs/MailmanPath3D/MailmanPathFollow3D" unique_id=1743369802 instance=ExtResource("16_jbj1t")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, -2.220446e-16, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Level" type="Node3D" parent="." unique_id=1172444004]
+
+[node name="Gate" parent="Level" unique_id=203334108 instance=ExtResource("4_o6xl0")]
+unique_name_in_owner = true
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -31.662035, 0, 0)
+
+[node name="CSGCylinder3D2" type="CSGCombiner3D" parent="Level" unique_id=238243326]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.895, 0, 0)
+use_collision = true
+collision_layer = 9
+collision_mask = 0
+
+[node name="Floor" type="CSGBox3D" parent="Level/CSGCylinder3D2" unique_id=1141246252]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.895, -0.25, 0)
+use_collision = true
+collision_mask = 0
+size = Vector3(200, 0.5, 200)
+material = SubResource("StandardMaterial3D_1xwnf")
+metadata/_edit_lock_ = true
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Level/CSGCylinder3D2" unique_id=458572666]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.752346, -0.25, 0)
+collision_layer = 8
+collision_mask = 0
+radius = 1.3
+height = 0.6
+material = ExtResource("8_0ld40")
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="Level/CSGCylinder3D2" unique_id=1678516378]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.752346, -0.16445094, 0)
+operation = 2
+collision_layer = 8
+collision_mask = 0
+radius = 1.2
+height = 0.994
+material = ExtResource("8_0ld40")
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="Level/CSGCylinder3D2" unique_id=370649257]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.62833, -0.25, 0)
+collision_layer = 8
+collision_mask = 0
+radius = 1.3
+height = 0.6
+material = ExtResource("8_0ld40")
+
+[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="Level/CSGCylinder3D2" unique_id=912970767]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.62833, -0.16445094, 0)
+operation = 2
+collision_layer = 8
+collision_mask = 0
+radius = 1.2
+height = 0.994
+material = ExtResource("8_0ld40")
+
+[node name="CSGCylinder3D7" type="CSGCylinder3D" parent="Level/CSGCylinder3D2" unique_id=1029149582]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3898563, -0.25, 0)
+collision_layer = 8
+collision_mask = 0
+radius = 1.3
+height = 0.6
+material = ExtResource("8_0ld40")
+
+[node name="CSGCylinder3D8" type="CSGCylinder3D" parent="Level/CSGCylinder3D2" unique_id=22561847]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3898563, -0.16445094, 0)
+operation = 2
+collision_layer = 8
+collision_mask = 0
+radius = 1.2
+height = 0.994
+material = ExtResource("8_0ld40")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Level" unique_id=1285775817]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -22.116035, 0.4, 0)
+material_override = SubResource("StandardMaterial3D_0ld40")
+use_collision = true
+collision_layer = 8
+collision_mask = 0
+radius = 0.4
+material = ExtResource("8_0ld40")
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Level" unique_id=1842003329]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -7.1141353, 0.4, 0)
+use_collision = true
+collision_layer = 8
+collision_mask = 0
+radius = 0.4
+material = ExtResource("8_0ld40")
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="Level" unique_id=945935641]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.4, 0)
+use_collision = true
+collision_layer = 8
+collision_mask = 0
+radius = 0.4
+material = ExtResource("8_0ld40")
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="Level" unique_id=1426027694]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 24.860813, 0.4, 0)
+use_collision = true
+collision_layer = 8
+collision_mask = 0
+radius = 0.4
+material = ExtResource("8_0ld40")
+
+[node name="Deadzone" type="Area3D" parent="Level" unique_id=838305306]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.1722382, 0)
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Deadzone" unique_id=1759004696]
+shape = SubResource("WorldBoundaryShape3D_1xwnf")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Level" unique_id=1490292857]
+transform = Transform3D(0.9468704, -0.32161543, 0, 0.32161543, 0.9468704, 0, 0, 0, 1, 36.5943, -0.34536728, 0)
+material_override = SubResource("StandardMaterial3D_jscy8")
+use_collision = true
+collision_mask = 0
+size = Vector3(3.9539795, 1.7294922, 1.7978516)
+material = ExtResource("11_yc10j")
+metadata/_edit_lock_ = true
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Level" unique_id=1698697010]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.248325, 0.24449351, 0)
+use_collision = true
+collision_mask = 0
+size = Vector3(2.1370544, 1.7294922, 1.7978516)
+material = ExtResource("11_yc10j")
+metadata/_edit_lock_ = true
+
+[node name="Cars" type="Node" parent="Level" unique_id=822313509]
+unique_name_in_owner = true
+
+[node name="Marker3D" type="Marker3D" parent="Level/Cars" unique_id=679935707]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.219135, 0, -46.90488)
+
+[node name="Marker3D2" type="Marker3D" parent="Level/Cars" unique_id=1760483851]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 47.5215, 0, 42.95902)
+
+[node name="StopDogArea" type="Area3D" parent="Level" unique_id=1730053511]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.25433, 1.7088844, 0)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/StopDogArea" unique_id=1161073913]
+shape = SubResource("BoxShape3D_gqmmt")
+metadata/_edit_lock_ = true
+
+[node name="StopPlayerArea" type="Area3D" parent="Level" unique_id=437167928]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.214565, 1.707259, 0)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/StopPlayerArea" unique_id=700349862]
+shape = SubResource("BoxShape3D_1xwnf")
+metadata/_edit_lock_ = true
+
+[node name="ChangeRealityArea" type="Area3D" parent="Level" unique_id=96907500]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.165304, 0.6864809, 0)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/ChangeRealityArea" unique_id=1187358541]
+shape = SubResource("BoxShape3D_0ld40")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Level" unique_id=2126119787]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.237, 0.59643126, 6)
+use_collision = true
+collision_mask = 0
+size = Vector3(61.11267, 2.191864, 0.57373047)
+material = SubResource("StandardMaterial3D_pm3ni")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Level" unique_id=724477332]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.237, 0.41601133, -6)
+use_collision = true
+collision_mask = 0
+size = Vector3(61.113, 2.192, 0.574)
+material = SubResource("StandardMaterial3D_pm3ni")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Level" unique_id=1278243175]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 38.514, 0.5888629, -28)
+use_collision = true
+collision_mask = 0
+size = Vector3(40.852997, 2.1767273, 0.57373047)
+material = SubResource("StandardMaterial3D_pm3ni")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Level" unique_id=214122560]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 38.514, 0.78637266, 28)
+use_collision = true
+collision_mask = 0
+size = Vector3(40.852997, 2.5717468, 0.57373047)
+material = SubResource("StandardMaterial3D_pm3ni")
+
+[node name="MailmanArea" type="Area3D" parent="." unique_id=188100575]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8390195, 0.5, -1.7719387)
+collision_layer = 0
+collision_mask = 2
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MailmanArea" unique_id=738284723]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.899338, 0.5, 0.72122)
+shape = SubResource("BoxShape3D_og1vs")
+
+[node name="StartRunning" type="Area3D" parent="." unique_id=1959840812]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.798311, 0, 0)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StartRunning" unique_id=1456406548]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.662035, 0.5, 0)
+shape = SubResource("BoxShape3D_rsxcb")
+
+[node name="SpawnDogOutside" type="Marker3D" parent="StartRunning" unique_id=130730526]
+unique_name_in_owner = true
+transform = Transform3D(1.3113414e-07, 0, -0.9999999, 0, 1, 0, 0.9999999, 0, 1.3113414e-07, -29.57662, 0.029134639, 0)
+
+[node name="StateMachine" type="Node" parent="." unique_id=1797829578 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("9_choun")
+initial_state = NodePath("Paused")
+metadata/_custom_type_script = "uid://bmmbikveeji1g"
+
+[node name="Paused" type="Node" parent="StateMachine" unique_id=1571351784 node_paths=PackedStringArray("input_component", "in_house", "dog_area")]
+script = ExtResource("18_2wyq8")
+input_component = NodePath("../../Components/InputComponent")
+in_house = NodePath("../InHouse")
+dog_area = NodePath("../../NPCs/DogArea")
+metadata/_custom_type_script = "uid://2bsvcgnb6h47"
+
+[node name="InHouse" type="Node" parent="StateMachine" unique_id=197267142 node_paths=PackedStringArray("outside_house_state", "mailman_sequence", "input_component")]
+script = ExtResource("19_og1vs")
+outside_house_state = NodePath("../OutsideHouse")
+mailman_sequence = NodePath("../../Sequences/MailmainSequence")
+input_component = NodePath("../../Components/InputComponent")
+metadata/_custom_type_script = "uid://2bsvcgnb6h47"
+
+[node name="OutsideHouse" type="Node" parent="StateMachine" unique_id=228121385 node_paths=PackedStringArray("dog_escape_sequence", "mailman")]
+unique_name_in_owner = true
+script = ExtResource("21_vxglm")
+dog_escape_sequence = NodePath("../../Sequences/DogEscapeSequence")
+mailman = NodePath("../../NPCs/MailmanPath3D/MailmanPathFollow3D/Mailman")
+next_scene = ExtResource("17_pm3ni")
+metadata/_custom_type_script = "uid://2bsvcgnb6h47"
+
+[node name="Components" type="Node" parent="." unique_id=1032701905]
+
+[node name="InputComponent" type="Node" parent="Components" unique_id=799200128]
+unique_name_in_owner = true
+script = ExtResource("12_eb6dy")
+metadata/_custom_type_script = "uid://fwq1s2avykcx"
+
+[node name="CameraComponent" type="Node" parent="Components" unique_id=1110048062 node_paths=PackedStringArray("spring_arm")]
+script = ExtResource("12_a8y0u")
+spring_arm = NodePath("../../PlayerGroup/Player/SpringArm3D")
+follow_mouse = true
+metadata/_custom_type_script = "uid://ct2hukm0k3e2o"
+
+[node name="WorldEnvironmentComponent" type="Node" parent="Components" unique_id=1777271713 node_paths=PackedStringArray("world_environment", "directional_light")]
+unique_name_in_owner = true
+script = ExtResource("19_jscy8")
+world_environment = NodePath("../../WorldEnvironment")
+directional_light = NodePath("../../DirectionalLight3D")
+metadata/_custom_type_script = "uid://chhs30ss1xuo7"
+
+[node name="Sequences" type="Node" parent="." unique_id=1288352177]
+
+[node name="MailmainSequence" type="Node" parent="Sequences" unique_id=1982687933 node_paths=PackedStringArray("mailman_area", "mailman")]
+script = ExtResource("24_y6deb")
+mailman_area = NodePath("../../MailmanArea")
+mailman = NodePath("../../NPCs/MailmanPath3D/MailmanPathFollow3D/Mailman")
+metadata/_custom_type_script = "uid://bdatu6p6htn1r"
+
+[node name="DogEscapeSequence" type="Node" parent="Sequences" unique_id=1922936076 node_paths=PackedStringArray("dog", "spawn_dog_outside", "start_running", "mailman", "car_spawner_markers")]
+script = ExtResource("26_2wyq8")
+dog = NodePath("../../NPCs/Dog")
+spawn_dog_outside = NodePath("../../StartRunning/SpawnDogOutside")
+start_running = NodePath("../../StartRunning")
+mailman = NodePath("../../NPCs/MailmanPath3D/MailmanPathFollow3D/Mailman")
+car_scene = ExtResource("12_gqmmt")
+car_spawner_markers = [NodePath("../../Level/Cars/Marker3D"), NodePath("../../Level/Cars/Marker3D2")]
+metadata/_custom_type_script = "uid://bdatu6p6htn1r"
+
+[connection signal="body_entered" from="Level/Deadzone" to="." method="_on_deadzone_body_entered"]
+[connection signal="body_entered" from="Level/StopDogArea" to="Sequences/DogEscapeSequence" method="_on_stop_dog_area_body_entered"]
+[connection signal="body_entered" from="Level/StopPlayerArea" to="Sequences/DogEscapeSequence" method="_on_stop_player_area_body_entered"]
+[connection signal="body_entered" from="Level/ChangeRealityArea" to="Sequences/DogEscapeSequence" method="_on_change_reality_area_body_entered"]
+[connection signal="body_entered" from="StartRunning" to="Sequences/DogEscapeSequence" method="_on_start_running_body_entered"]

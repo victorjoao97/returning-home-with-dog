@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://cbbyw4hppavto"]
+
+[ext_resource type="Material" uid="uid://dg2kaepe53imn" path="res://resources/floor_material.tres" id="1_bhnmm"]
+[ext_resource type="PackedScene" uid="uid://bbrnnu73t40c2" path="res://scenes/player.tscn" id="1_r7rif"]
+[ext_resource type="PackedScene" uid="uid://dl4u7sjmbamyp" path="res://scenes/dog.tscn" id="3_0q4gc"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bhnmm"]
+sky_top_color = Color(0.2866572, 0.41865966, 0.8054704, 1)
+sky_horizon_color = Color(0.59540296, 0.64867693, 0.71530473, 1)
+ground_bottom_color = Color(0.11911894, 0.20021239, 0.07991303, 1)
+ground_horizon_color = Color(0.59540296, 0.64867693, 0.71530473, 1)
+
+[sub_resource type="Sky" id="Sky_0q4gc"]
+sky_material = SubResource("ProceduralSkyMaterial_bhnmm")
+
+[sub_resource type="Environment" id="Environment_l0upd"]
+background_mode = 2
+sky = SubResource("Sky_0q4gc")
+glow_enabled = true
+
+[node name="AfterAccident" type="Node3D" unique_id=667853083]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1186117972]
+environment = SubResource("Environment_l0upd")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=208327202]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Floor" type="CSGBox3D" parent="." unique_id=1779741248]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8640137, 5.4331303, -3.7701416)
+use_collision = true
+collision_mask = 0
+size = Vector3(13.446777, 10.133057, 10.4157715)
+material = ExtResource("1_bhnmm")
+
+[node name="Floor2" type="CSGBox3D" parent="." unique_id=1010008847]
+transform = Transform3D(0.9580288, 0.2866719, 0, -0.2866719, 0.9580288, 0, 0, 0, 1, -17.74194, 7.059623, -11.747349)
+use_collision = true
+collision_mask = 0
+size = Vector3(13.446777, 10.133057, 10.4157715)
+material = ExtResource("1_bhnmm")
+
+[node name="Floor3" type="CSGBox3D" parent="." unique_id=2139674042]
+transform = Transform3D(0.9885605, 0.1508247, 0, -0.1508247, 0.9885605, 0, 0, 0, 1, -28.884403, 8.758433, -21.983074)
+use_collision = true
+collision_mask = 0
+size = Vector3(13.446777, 10.133057, 11.175659)
+material = ExtResource("1_bhnmm")
+
+[node name="Floor4" type="CSGBox3D" parent="." unique_id=1092663622]
+transform = Transform3D(0.9885605, 0.1508247, 0, -0.1508247, 0.9885605, 0, 0, 0, 1, -42.835926, 10.163152, -12.684907)
+use_collision = true
+collision_mask = 0
+size = Vector3(13.446777, 10.133057, 11.175659)
+material = ExtResource("1_bhnmm")
+
+[node name="Floor5" type="CSGBox3D" parent="." unique_id=1861126215]
+transform = Transform3D(0.9885605, 0.1508247, 0, -0.1508247, 0.9885605, 0, 0, 0, 1, -54.377117, 13.5286255, 1.0944424)
+use_collision = true
+collision_mask = 0
+size = Vector3(13.446777, 3.3242188, 19.969177)
+material = ExtResource("1_bhnmm")
+
+[node name="Floor6" type="CSGBox3D" parent="." unique_id=1355520220]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -89.784706, 7.8745575, -7.1215076)
+operation = 1
+use_collision = true
+collision_mask = 0
+size = Vector3(61.646423, 11.127075, 83.158554)
+material = ExtResource("1_bhnmm")
+
+[node name="Player" parent="." unique_id=1865470289 instance=ExtResource("1_r7rif")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.486461, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Player" unique_id=1306694162]
+transform = Transform3D(0.49999997, -0.3383831, 0.79718065, 0, 0.92050487, 0.39073113, -0.86602545, -0.19536555, 0.4602524, 2.9913726, 2.9245625, 0.9437839)
+
+[node name="Dog" parent="." unique_id=1692485038 instance=ExtResource("3_0q4gc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7382865, 10.499659, -2.1237044)

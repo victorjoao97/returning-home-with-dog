@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://dl4u7sjmbamyp"]
+
+[ext_resource type="Script" uid="uid://dekx3li32kb1h" path="res://scripts/dog.gd" id="1_on80e"]
+[ext_resource type="Script" uid="uid://bmmbikveeji1g" path="res://scripts/states/state_machine.gd" id="3_gmowd"]
+[ext_resource type="Script" uid="uid://b42sllnq0f0il" path="res://scripts/states/dog/idle.gd" id="4_iaoh4"]
+[ext_resource type="Script" uid="uid://cg44e3vkiky32" path="res://scripts/states/dog/running.gd" id="5_i2xh6"]
+[ext_resource type="Script" uid="uid://dk7ijgqf6ci5" path="res://scripts/components/movement_component.gd" id="6_i2xh6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_311cg"]
+albedo_color = Color(0, 0.62380743, 0.9406124, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_1xwnf"]
+material = SubResource("StandardMaterial3D_311cg")
+radius = 0.4
+height = 1.5
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_laypt"]
+radius = 0.4
+height = 1.5
+
+[node name="Dog" type="CharacterBody3D" unique_id=1692485038]
+collision_layer = 4
+collision_mask = 11
+script = ExtResource("1_on80e")
+
+[node name="CollisionAhead" type="RayCast3D" parent="." unique_id=1180794224]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.31984866, -0.9386786)
+target_position = Vector3(0, 0, -1)
+collision_mask = 8
+
+[node name="CollisionGround" type="RayCast3D" parent="." unique_id=58806975]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14190477, -0.92577755)
+target_position = Vector3(0, -2, -4)
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="." unique_id=2102169856]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.4, 0)
+mesh = SubResource("CapsuleMesh_1xwnf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=953852445]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.4, 0)
+shape = SubResource("CapsuleShape3D_laypt")
+
+[node name="StateMachine" type="Node" parent="." unique_id=823413297 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_gmowd")
+initial_state = NodePath("Idle")
+metadata/_custom_type_script = "uid://bmmbikveeji1g"
+
+[node name="Idle" type="Node" parent="StateMachine" unique_id=2045348216]
+script = ExtResource("4_iaoh4")
+metadata/_custom_type_script = "uid://2bsvcgnb6h47"
+
+[node name="Escaping" type="Node" parent="StateMachine" unique_id=652089365 node_paths=PackedStringArray("body", "idle_state")]
+script = ExtResource("5_i2xh6")
+body = NodePath("../..")
+idle_state = NodePath("../Idle")
+metadata/_custom_type_script = "uid://2bsvcgnb6h47"
+
+[node name="MovementComponent" type="Node" parent="." unique_id=189473252 node_paths=PackedStringArray("body", "model")]
+unique_name_in_owner = true
+script = ExtResource("6_i2xh6")
+body = NodePath("..")
+model = NodePath("../CSGMesh3D")
+metadata/_custom_type_script = "uid://dk7ijgqf6ci5"
+
+[node name="Label3D" type="Label3D" parent="." unique_id=827415352]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1398301, 0)
+billboard = 1
+text = "Dog"

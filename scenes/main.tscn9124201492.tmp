@@ -1,0 +1,407 @@
+[gd_scene format=3 uid="uid://k0be3k7kpmn6"]
+
+[ext_resource type="Script" uid="uid://7dvxqllb6634" path="res://scripts/main.gd" id="1_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://bbrnnu73t40c2" path="res://scenes/player.tscn" id="1_o5qli"]
+[ext_resource type="Script" uid="uid://c0eh7mou0efqp" path="res://scripts/camera_3d.gd" id="3_a8y0u"]
+[ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="3_gqmmt"]
+[ext_resource type="PackedScene" uid="uid://qkmbwpge6s5w" path="res://scenes/first_level.tscn" id="4_0ld40"]
+[ext_resource type="PackedScene" uid="uid://c6vt2v3hnsknu" path="res://scenes/gate.tscn" id="4_o6xl0"]
+[ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="5_pm3ni"]
+[ext_resource type="PackedScene" uid="uid://dl4u7sjmbamyp" path="res://scenes/dog.tscn" id="5_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://btm0uctit02ck" path="res://scenes/easy_obstacule.tscn" id="6_tefeu"]
+[ext_resource type="Resource" uid="uid://cptfoggk2ok67" path="res://addons/phantom_camera/examples/resources/tween/player_phantom_camera_3d_tween.tres" id="6_y6deb"]
+[ext_resource type="Script" uid="uid://b8hhnqsugykly" path="res://addons/phantom_camera/scripts/resources/camera_3d_resource.gd" id="7_og1vs"]
+[ext_resource type="Script" uid="uid://bmmbikveeji1g" path="res://scripts/states/state_machine.gd" id="9_choun"]
+[ext_resource type="Script" uid="uid://fwq1s2avykcx" path="res://scripts/components/input_component.gd" id="12_eb6dy"]
+[ext_resource type="Script" uid="uid://ct2hukm0k3e2o" path="res://scripts/components/camera_component.gd" id="13_trceg"]
+[ext_resource type="Script" uid="uid://dkhpqn6e3ryb1" path="res://scripts/components/follow_component.gd" id="15_jkv2x"]
+[ext_resource type="PackedScene" uid="uid://2qev34ncb7kl" path="res://scenes/mailman.tscn" id="16_jbj1t"]
+[ext_resource type="Script" uid="uid://bh7f1jgeeshi7" path="res://scripts/states/game/paused.gd" id="18_2wyq8"]
+[ext_resource type="Script" uid="uid://rt7ypd85486v" path="res://scripts/states/game/in_house.gd" id="19_og1vs"]
+[ext_resource type="AudioStream" uid="uid://bdhviu3pxicx8" path="res://assets/audio/mercado livre entrega - QuickSounds.com.mp3" id="20_yc10j"]
+[ext_resource type="Script" uid="uid://dhx5h08sjqqru" path="res://scripts/states/game/outside_house.gd" id="21_vxglm"]
+[ext_resource type="Script" uid="uid://b5c23hufsq877" path="res://scripts/sequences/mailmain_sequence.gd" id="24_y6deb"]
+[ext_resource type="Script" uid="uid://d3nqnrvqwq52s" path="res://scripts/sequences/dog_escape_sequence.gd" id="26_2wyq8"]
+[ext_resource type="Script" uid="uid://dbc3fxr8e522y" path="res://scripts/canvas_layer.gd" id="27_vxglm"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_o5qli"]
+sky_top_color = Color(0.0681449, 0.37482062, 1, 1)
+sky_horizon_color = Color(1, 0.5152341, 0.2838741, 1)
+sky_curve = 0.049481563
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_0wfyh"]
+sky_material = SubResource("ProceduralSkyMaterial_o5qli")
+
+[sub_resource type="Environment" id="Environment_sugp2"]
+background_mode = 2
+sky = SubResource("Sky_0wfyh")
+glow_enabled = true
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_1xwnf"]
+
+[sub_resource type="Resource" id="Resource_2wyq8"]
+script = ExtResource("7_og1vs")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_311cg"]
+size = Vector3(1.6943359, 1, 1.5517578)
+
+[sub_resource type="Curve3D" id="Curve3D_y6deb"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 12.499935, 0.12699986, -11.897842, 0, 0, 0, 0, 0, 0, 15, 0.127, -11.697, 0, 0, 0, 0, 0, 0, 15, 0.127, 2.91),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
+[sub_resource type="Resource" id="Resource_vxglm"]
+script = ExtResource("7_og1vs")
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_1xwnf"]
+vertices = PackedVector3Array(-13.860321, 0.4995, -13.197001, -13.860321, 0.4995, 0.55299854, -0.61032104, 0.4995, 0.55299854, -0.61032104, 0.4995, -13.197001)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rerfc"]
+size = Vector3(0.2998047, 3.1311035, 4.018799)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_og1vs"]
+size = Vector3(3.5, 2, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2wyq8"]
+transparency = 1
+albedo_color = Color(0.85796326, 0, 0.27858493, 0.5529412)
+
+[sub_resource type="BoxMesh" id="BoxMesh_y6deb"]
+material = SubResource("StandardMaterial3D_2wyq8")
+size = Vector3(3.5, 2, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rsxcb"]
+size = Vector3(1.4241791, 1, 2.6660156)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vxglm"]
+bg_color = Color(0, 0, 0, 0.24705882)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+
+[node name="Main" type="Node3D" unique_id=1201746872]
+script = ExtResource("1_jyhfs")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1584887193]
+environment = SubResource("Environment_sugp2")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1414444004]
+transform = Transform3D(-0.07714854, 0.8448248, -0.52945185, -0.6686447, 0.35006955, 0.65602255, 0.739569, 0.4046264, 0.53788024, 0, 6.565236, 0.0024986267)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1285880669 node_paths=PackedStringArray("player")]
+unique_name_in_owner = true
+physics_interpolation_mode = 1
+transform = Transform3D(-0.99753964, -0.02535631, 0.065358646, 0, 0.932298, 0.36169097, -0.0701049, 0.3608011, -0.9300041, -1.9534726, 3, -13.572067)
+top_level = true
+script = ExtResource("3_a8y0u")
+player = NodePath("../PlayerGroup/Player")
+
+[node name="PhantomCameraHost" type="Node" parent="Camera3D" unique_id=1324524967]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("3_gqmmt")
+metadata/_custom_type_script = "uid://bd046eokvcnu2"
+
+[node name="Deadzone" type="StaticBody3D" parent="." unique_id=1779549955]
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Deadzone" unique_id=667921990]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5566566, 0)
+shape = SubResource("WorldBoundaryShape3D_1xwnf")
+
+[node name="PlayerGroup" type="Node" parent="." unique_id=2091826681]
+
+[node name="Player" parent="PlayerGroup" unique_id=162577266 instance=ExtResource("1_o5qli")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9534726, 0, -11.572067)
+
+[node name="PlayerPhantomCamera3D" type="Node3D" parent="PlayerGroup" unique_id=1931983331 node_paths=PackedStringArray("follow_target")]
+unique_name_in_owner = true
+transform = Transform3D(-0.99753964, -0.02535631, 0.065358646, 0, 0.932298, 0.36169097, -0.0701049, 0.3608011, -0.9300041, -1.9534726, 3, -13.572067)
+top_level = true
+script = ExtResource("5_pm3ni")
+priority = 10
+follow_mode = 2
+follow_target = NodePath("../Player")
+tween_resource = ExtResource("6_y6deb")
+tween_on_load = false
+camera_3d_resource = SubResource("Resource_2wyq8")
+follow_offset = Vector3(0, 3, -2)
+follow_damping = true
+align_transform_with_view = Callable()
+align_position_with_view = Callable()
+
+[node name="NPCs" type="Node" parent="." unique_id=1776867597]
+
+[node name="Dog" parent="NPCs" unique_id=1692485038 instance=ExtResource("5_tbgi4")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.4822483, 0, -10.639389)
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="NPCs/Dog" unique_id=1993176877]
+
+[node name="DogInteractionLabel" type="Label3D" parent="NPCs/Dog" unique_id=845309282]
+unique_name_in_owner = true
+transform = Transform3D(-4.4703484e-08, 0, -1.0000001, -2.9802322e-08, 1, 1.8626451e-09, 1, 2.9802322e-08, -4.8428774e-08, 0, 1.0778015, 0)
+billboard = 1
+text = "Press E"
+
+[node name="DogArea" type="Area3D" parent="NPCs/Dog" unique_id=645542927]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPCs/Dog/DogArea" unique_id=1694628877]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.51389945, 0)
+shape = SubResource("BoxShape3D_311cg")
+
+[node name="MailmanPath3D" type="Path3D" parent="NPCs" unique_id=1078573912]
+transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, -13.8665695, 0, -2.536598)
+curve = SubResource("Curve3D_y6deb")
+
+[node name="MailmanPathFollow3D" type="PathFollow3D" parent="NPCs/MailmanPath3D" unique_id=1270223336]
+unique_name_in_owner = true
+transform = Transform3D(-0.08007687, -5.9220625e-08, -0.9967844, 0, 0.9999952, -5.9411445e-08, 0.9967844, -4.7575006e-09, -0.08007687, 12.499935, 0.12699986, -11.897842)
+
+[node name="Mailman" parent="NPCs/MailmanPath3D/MailmanPathFollow3D" unique_id=1743369802 instance=ExtResource("16_jbj1t")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, -2.220446e-16, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="NPCs/MailmanPath3D/MailmanPathFollow3D/Mailman" unique_id=1669531233]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.477, 0)
+stream = ExtResource("20_yc10j")
+max_distance = 20.0
+
+[node name="InteractionLabel" type="Label3D" parent="NPCs/MailmanPath3D/MailmanPathFollow3D/Mailman" unique_id=1023539543]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.015345573, 1.8443719, 0)
+visible = false
+billboard = 1
+text = "Press E"
+
+[node name="GatePhantomCamera3D" type="Node3D" parent="NPCs" unique_id=2036018844]
+unique_name_in_owner = true
+transform = Transform3D(0.70710695, -0.18301266, 0.68301237, 0, 0.96592563, 0.25881892, -0.70710695, -0.18301266, 0.68301237, 3.788, 4.309, 0.84104395)
+script = ExtResource("5_pm3ni")
+tween_resource = ExtResource("6_y6deb")
+camera_3d_resource = SubResource("Resource_vxglm")
+
+[node name="OutsidePhantomCamera3D" type="Node3D" parent="NPCs" unique_id=1807869866]
+unique_name_in_owner = true
+transform = Transform3D(-0.8660259, -0.1294095, 0.4829628, 0, 0.96592563, 0.25881895, -0.50000036, 0.22414382, -0.83651596, 3.2331963, 4.3087554, -12.383757)
+script = ExtResource("5_pm3ni")
+tween_resource = ExtResource("6_y6deb")
+camera_3d_resource = SubResource("Resource_vxglm")
+
+[node name="PlayerPlataformerPhantomCamera3D" type="Node3D" parent="NPCs" unique_id=898195819 node_paths=PackedStringArray("follow_target")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 0.91913545, 0.39394185, 0, -0.39394197, 0.91913515, 3.0465274, 5, -4.5720673)
+top_level = true
+script = ExtResource("5_pm3ni")
+follow_mode = 2
+follow_target = NodePath("../../PlayerGroup/Player")
+tween_resource = ExtResource("6_y6deb")
+tween_on_load = false
+camera_3d_resource = SubResource("Resource_2wyq8")
+follow_offset = Vector3(5, 5, 7)
+follow_damping = true
+align_transform_with_view = Callable()
+align_position_with_view = Callable()
+
+[node name="Level" parent="." unique_id=402749971 instance=ExtResource("4_0ld40")]
+
+[node name="Gate" parent="Level" unique_id=203334108 instance=ExtResource("4_o6xl0")]
+unique_name_in_owner = true
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.0026738644, 0, -0.84)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="Level" unique_id=391448376]
+navigation_mesh = SubResource("NavigationMesh_1xwnf")
+
+[node name="HouseGround" type="CSGBox3D" parent="Level/NavigationRegion3D" unique_id=1141246252]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.181, 0, -6.3479123)
+use_collision = true
+collision_mask = 0
+size = Vector3(14.358643, 0.001, 14.698178)
+
+[node name="Obstacules" type="Node" parent="." unique_id=1153712335]
+
+[node name="Timer" type="Timer" parent="." unique_id=680865105]
+autostart = true
+
+[node name="Label" type="Label" parent="." unique_id=1773576729]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Timer"
+
+[node name="EasyObstacule" parent="." unique_id=629223241 instance=ExtResource("6_tefeu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.62627, 0.00035572052, -0.81820405)
+
+[node name="SpawnDogOutside" type="Marker3D" parent="." unique_id=130730526]
+unique_name_in_owner = true
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 1, 0, 1)
+
+[node name="NextLevel" type="Area3D" parent="." unique_id=1852424636]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 145.06197, -1.3031166, 0)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NextLevel" unique_id=937139088]
+shape = SubResource("BoxShape3D_rerfc")
+
+[node name="StartChangeReality" type="Area3D" parent="." unique_id=984896387]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 98.266975, 0.05793619, 0)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StartChangeReality" unique_id=1376900840]
+shape = SubResource("BoxShape3D_rerfc")
+
+[node name="MailmanArea" type="Area3D" parent="." unique_id=188100575]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8390195, 0.5, -1.7719387)
+collision_layer = 0
+collision_mask = 2
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MailmanArea" unique_id=738284723]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_og1vs")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="MailmanArea" unique_id=99347916]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("BoxMesh_y6deb")
+
+[node name="StartRunning" type="Area3D" parent="." unique_id=1959840812]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9113226, 1.07892, -2.4059353)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StartRunning" unique_id=1456406548]
+shape = SubResource("BoxShape3D_rsxcb")
+
+[node name="StateMachine" type="Node" parent="." unique_id=1797829578 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("9_choun")
+initial_state = NodePath("Paused")
+metadata/_custom_type_script = "uid://bmmbikveeji1g"
+
+[node name="Paused" type="Node" parent="StateMachine" unique_id=1571351784 node_paths=PackedStringArray("input_component", "in_house", "canvas_layer", "dog_area")]
+script = ExtResource("18_2wyq8")
+input_component = NodePath("../../Components/InputComponent")
+in_house = NodePath("../InHouse")
+canvas_layer = NodePath("../../CanvasLayer")
+dog_area = NodePath("../../NPCs/Dog/DogArea")
+metadata/_custom_type_script = "uid://2bsvcgnb6h47"
+
+[node name="InHouse" type="Node" parent="StateMachine" unique_id=197267142 node_paths=PackedStringArray("outside_house_state", "mailman_sequence", "input_component", "canvas_layer")]
+script = ExtResource("19_og1vs")
+outside_house_state = NodePath("../OutsideHouse")
+mailman_sequence = NodePath("../../Sequences/MailmainSequence")
+input_component = NodePath("../../Components/InputComponent")
+canvas_layer = NodePath("../../CanvasLayer")
+metadata/_custom_type_script = "uid://2bsvcgnb6h47"
+
+[node name="OutsideHouse" type="Node" parent="StateMachine" unique_id=228121385 node_paths=PackedStringArray("dog_escape_sequence")]
+unique_name_in_owner = true
+script = ExtResource("21_vxglm")
+dog_escape_sequence = NodePath("../../Sequences/DogEscapeSequence")
+metadata/_custom_type_script = "uid://2bsvcgnb6h47"
+
+[node name="Components" type="Node" parent="." unique_id=1032701905]
+
+[node name="InputComponent" type="Node" parent="Components" unique_id=799200128]
+unique_name_in_owner = true
+script = ExtResource("12_eb6dy")
+metadata/_custom_type_script = "uid://fwq1s2avykcx"
+
+[node name="CameraComponent" type="Node" parent="Components" unique_id=615318852 node_paths=PackedStringArray("camera")]
+unique_name_in_owner = true
+script = ExtResource("13_trceg")
+camera = NodePath("../../Camera3D")
+metadata/_custom_type_script = "uid://ct2hukm0k3e2o"
+
+[node name="FollowComponent" type="Node" parent="Components" unique_id=1203155814 node_paths=PackedStringArray("target", "source", "navigation_agent")]
+unique_name_in_owner = true
+script = ExtResource("15_jkv2x")
+target = NodePath("../../PlayerGroup/Player")
+source = NodePath("../../NPCs/Dog")
+navigation_agent = NodePath("../../NPCs/Dog/NavigationAgent3D")
+follow_distance = 2.0
+metadata/_custom_type_script = "uid://dkhpqn6e3ryb1"
+
+[node name="Sequences" type="Node" parent="." unique_id=1288352177]
+
+[node name="MailmainSequence" type="Node" parent="Sequences" unique_id=1982687933 node_paths=PackedStringArray("mailman_area", "audio_stream_player", "interaction_label", "mailman", "npc_phantom_camera")]
+script = ExtResource("24_y6deb")
+mailman_area = NodePath("../../MailmanArea")
+audio_stream_player = NodePath("../../NPCs/MailmanPath3D/MailmanPathFollow3D/Mailman/AudioStreamPlayer3D")
+interaction_label = NodePath("../../NPCs/MailmanPath3D/MailmanPathFollow3D/Mailman/InteractionLabel")
+mailman = NodePath("../../NPCs/MailmanPath3D/MailmanPathFollow3D/Mailman")
+npc_phantom_camera = NodePath("../../NPCs/GatePhantomCamera3D")
+metadata/_custom_type_script = "uid://bdatu6p6htn1r"
+
+[node name="DogEscapeSequence" type="Node" parent="Sequences" unique_id=1922936076 node_paths=PackedStringArray("dog", "spawn_dog_outside", "start_running", "mailman", "interaction_label", "outside_phantom_camera_3d", "player_plataformer_phantom_camera_3d")]
+script = ExtResource("26_2wyq8")
+dog = NodePath("../../NPCs/Dog")
+spawn_dog_outside = NodePath("../../SpawnDogOutside")
+start_running = NodePath("../../StartRunning")
+mailman = NodePath("../../NPCs/MailmanPath3D/MailmanPathFollow3D/Mailman")
+interaction_label = NodePath("../../NPCs/MailmanPath3D/MailmanPathFollow3D/Mailman/InteractionLabel")
+outside_phantom_camera_3d = NodePath("../../NPCs/OutsidePhantomCamera3D")
+player_plataformer_phantom_camera_3d = NodePath("../../NPCs/PlayerPlataformerPhantomCamera3D")
+metadata/_custom_type_script = "uid://bdatu6p6htn1r"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1516943987]
+unique_name_in_owner = true
+script = ExtResource("27_vxglm")
+
+[node name="Panel" type="Panel" parent="CanvasLayer" unique_id=1095868072]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 26.0
+offset_top = -664.0
+offset_right = -1037.0
+offset_bottom = -364.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_vxglm")
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel" unique_id=1341992384]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = -8.0
+offset_bottom = 34.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 30
+text = "Tasks"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/Panel" unique_id=1321557736]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TasksContainer" type="VBoxContainer" parent="CanvasLayer/Panel/ScrollContainer" unique_id=262257613]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="NextLevel" to="." method="_on_next_level_body_entered"]
+[connection signal="body_entered" from="StartChangeReality" to="." method="_on_start_change_reality_body_entered"]
+[connection signal="body_entered" from="StartRunning" to="Sequences/DogEscapeSequence" method="_on_start_running_body_entered"]

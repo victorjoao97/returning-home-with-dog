@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://2qev34ncb7kl"]
+
+[ext_resource type="Script" uid="uid://cbrh1umv33dtq" path="res://scripts/mailman.gd" id="1_ipfhr"]
+[ext_resource type="PackedScene" uid="uid://c2x0qonutj5up" path="res://scenes/package.tscn" id="2_ipfhr"]
+[ext_resource type="Texture2D" uid="uid://bv7jo53sq6hn8" path="res://assets/prototype/Purple/texture_02.png" id="3_fnqd3"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1xwnf"]
+radius = 0.3466797
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_1xwnf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hudsw"]
+albedo_texture = ExtResource("3_fnqd3")
+uv1_triplanar = true
+
+[node name="Mailman" type="CharacterBody3D" unique_id=1743369802]
+script = ExtResource("1_ipfhr")
+metadata/_custom_type_script = "uid://bx0oy8mmnm1rh"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=875826652]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_1xwnf")
+
+[node name="Package" parent="." unique_id=1476477056 instance=ExtResource("2_ipfhr")]
+transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 1, 0, 1.271, 0.6478716)
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="." unique_id=543761093]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_1xwnf")
+material = SubResource("StandardMaterial3D_hudsw")
+
+[node name="Label3D" type="Label3D" parent="." unique_id=2042252334]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.185, 0)
+billboard = 1
+text = "Mailman"

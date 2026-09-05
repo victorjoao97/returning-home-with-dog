@@ -1,0 +1,97 @@
+[gd_scene format=3 uid="uid://bbrnnu73t40c2"]
+
+[ext_resource type="Script" uid="uid://dncml34asfv2m" path="res://scripts/player.gd" id="1_3vyb7"]
+[ext_resource type="Script" uid="uid://bmmbikveeji1g" path="res://scripts/states/state_machine.gd" id="2_qhqgy"]
+[ext_resource type="Script" uid="uid://pn31y031xefe" path="res://scripts/states/player/idle.gd" id="3_dqkch"]
+[ext_resource type="Script" uid="uid://drpmsi3pwcnfs" path="res://scripts/states/player/running.gd" id="4_dqkch"]
+[ext_resource type="Script" uid="uid://55pnmhdqmrlc" path="res://scripts/states/player/jumping.gd" id="5_fjrip"]
+[ext_resource type="Script" uid="uid://fwq1s2avykcx" path="res://scripts/components/input_component.gd" id="5_qlg0r"]
+[ext_resource type="Script" uid="uid://dk7ijgqf6ci5" path="res://scripts/components/movement_component.gd" id="6_tuyoq"]
+[ext_resource type="PackedScene" uid="uid://c210psrc8qp3n" path="res://assets/player/Simple_Character_PSX/model/fbx/simple-character-psx.fbx" id="8_smehm"]
+[ext_resource type="AnimationLibrary" uid="uid://cfeg63bfmtq4p" path="res://assets/player/Simple_Character_PSX/model/fbx/Breathing Idle.fbx" id="9_ur7pv"]
+[ext_resource type="AnimationLibrary" uid="uid://6ksx0x7u7y62" path="res://assets/player/Simple_Character_PSX/model/fbx/Fast Run.fbx" id="10_3v2ag"]
+[ext_resource type="AnimationLibrary" uid="uid://cycnpaowhopcu" path="res://assets/player/Simple_Character_PSX/model/fbx/Jumping.fbx" id="11_jej6c"]
+[ext_resource type="AnimationLibrary" uid="uid://dj0nd65qyo0c6" path="res://assets/player/Simple_Character_PSX/model/fbx/Walking.fbx" id="12_f1ej7"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1xwnf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4c5pb"]
+albedo_color = Color(0.48878807, 0.78578883, 0.99809986, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_rerfc"]
+material = SubResource("StandardMaterial3D_4c5pb")
+
+[sub_resource type="BoxMesh" id="BoxMesh_1xwnf"]
+size = Vector3(1, 0.088134766, 0.091796875)
+
+[node name="Player" type="CharacterBody3D" unique_id=1865470289]
+collision_layer = 2
+collision_mask = 13
+script = ExtResource("1_3vyb7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=943780286]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_1xwnf")
+
+[node name="Model" type="Node3D" parent="." unique_id=143727910]
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Model" unique_id=2141562197]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_rerfc")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Model" unique_id=1790385062]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.11658798, 1.6911588, 0.12597965)
+mesh = SubResource("BoxMesh_1xwnf")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Model" unique_id=1839531815]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.13271129, 1.6911588, -0.08296256)
+mesh = SubResource("BoxMesh_1xwnf")
+
+[node name="StateMachine" type="Node" parent="." unique_id=1831550398 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("2_qhqgy")
+initial_state = NodePath("Idle")
+metadata/_custom_type_script = "uid://bmmbikveeji1g"
+
+[node name="Idle" type="Node" parent="StateMachine" unique_id=1118343053 node_paths=PackedStringArray("running_state", "jumping_state", "input_component")]
+script = ExtResource("3_dqkch")
+running_state = NodePath("../Running")
+jumping_state = NodePath("../Jumping")
+input_component = NodePath("../../InputComponent")
+metadata/_custom_type_script = "uid://2bsvcgnb6h47"
+
+[node name="Running" type="Node" parent="StateMachine" unique_id=654117160 node_paths=PackedStringArray("idle_state", "jumping_state", "input_component", "movement_component")]
+script = ExtResource("4_dqkch")
+idle_state = NodePath("../Idle")
+jumping_state = NodePath("../Jumping")
+input_component = NodePath("../../InputComponent")
+movement_component = NodePath("../../MovementComponent")
+metadata/_custom_type_script = "uid://2bsvcgnb6h47"
+
+[node name="Jumping" type="Node" parent="StateMachine" unique_id=944864112 node_paths=PackedStringArray("idle_state", "running_state", "input_component", "movement_component")]
+script = ExtResource("5_fjrip")
+idle_state = NodePath("../Idle")
+running_state = NodePath("../Running")
+input_component = NodePath("../../InputComponent")
+movement_component = NodePath("../../MovementComponent")
+metadata/_custom_type_script = "uid://2bsvcgnb6h47"
+
+[node name="InputComponent" type="Node" parent="." unique_id=2002428133]
+script = ExtResource("5_qlg0r")
+metadata/_custom_type_script = "uid://fwq1s2avykcx"
+
+[node name="MovementComponent" type="Node" parent="." unique_id=388291899 node_paths=PackedStringArray("body", "model")]
+script = ExtResource("6_tuyoq")
+body = NodePath("..")
+model = NodePath("../CharacterModel")
+metadata/_custom_type_script = "uid://dk7ijgqf6ci5"
+
+[node name="CharacterModel" parent="." unique_id=640083745 instance=ExtResource("8_smehm")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterModel" unique_id=433659863]
+unique_name_in_owner = true
+"libraries/Breathing Idle" = ExtResource("9_ur7pv")
+"libraries/Fast Run" = ExtResource("10_3v2ag")
+libraries/Jumping = ExtResource("11_jej6c")
+libraries/Walking = ExtResource("12_f1ej7")
