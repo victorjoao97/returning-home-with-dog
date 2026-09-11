@@ -5,7 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://cmq7h1jpgt6y2" path="res://scenes/camera_controller.tscn" id="3_pm3ni"]
 [ext_resource type="PackedScene" uid="uid://c6vt2v3hnsknu" path="res://scenes/gate.tscn" id="4_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://dl4u7sjmbamyp" path="res://scenes/dog.tscn" id="5_tbgi4"]
-[ext_resource type="Texture2D" uid="uid://c85jwh5ump82m" path="res://assets/prototype/Dark/texture_08.png" id="7_jkv2x"]
 [ext_resource type="Material" uid="uid://v07f7lrkcjde" path="res://resources/obstacule_material.tres" id="8_0ld40"]
 [ext_resource type="Texture2D" uid="uid://rfqpraqtqvri" path="res://assets/prototype/Green/texture_08.png" id="8_muem4"]
 [ext_resource type="Script" uid="uid://bmmbikveeji1g" path="res://scripts/states/state_machine.gd" id="9_choun"]
@@ -14,13 +13,14 @@
 [ext_resource type="Script" uid="uid://ct2hukm0k3e2o" path="res://scripts/components/camera_component.gd" id="12_a8y0u"]
 [ext_resource type="Script" uid="uid://fwq1s2avykcx" path="res://scripts/components/input_component.gd" id="12_eb6dy"]
 [ext_resource type="PackedScene" uid="uid://r3ajoq8ka77o" path="res://scenes/car.tscn" id="12_gqmmt"]
-[ext_resource type="Texture2D" uid="uid://dvi1o3lrfpclu" path="res://assets/prototype/Dark/texture_07.png" id="12_yc10j"]
 [ext_resource type="PackedScene" uid="uid://2qev34ncb7kl" path="res://scenes/mailman.tscn" id="16_jbj1t"]
 [ext_resource type="PackedScene" uid="uid://cbbyw4hppavto" path="res://scenes/after_accident.tscn" id="17_pm3ni"]
 [ext_resource type="Script" uid="uid://bh7f1jgeeshi7" path="res://scripts/states/game/paused.gd" id="18_2wyq8"]
 [ext_resource type="Script" uid="uid://chhs30ss1xuo7" path="res://scripts/components/world_environment.gd" id="19_jscy8"]
 [ext_resource type="Script" uid="uid://rt7ypd85486v" path="res://scripts/states/game/in_house.gd" id="19_og1vs"]
 [ext_resource type="Script" uid="uid://dhx5h08sjqqru" path="res://scripts/states/game/outside_house.gd" id="21_vxglm"]
+[ext_resource type="PackedScene" uid="uid://bdx4lmtpg8meh" path="res://scenes/city.tscn" id="24_2wyq8"]
+[ext_resource type="PackedScene" uid="uid://ctjn6212kgm2s" path="res://models/player_home.tscn" id="24_og1vs"]
 [ext_resource type="Script" uid="uid://b5c23hufsq877" path="res://scripts/sequences/mailmain_sequence.gd" id="24_y6deb"]
 [ext_resource type="Script" uid="uid://d3nqnrvqwq52s" path="res://scripts/sequences/dog_escape_sequence.gd" id="26_2wyq8"]
 
@@ -42,7 +42,7 @@ ssil_enabled = true
 glow_enabled = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1xwnf"]
-albedo_texture = ExtResource("7_jkv2x")
+albedo_color = Color(0.31100228, 0.73221594, 0.53727484, 1)
 uv1_triplanar = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0ld40"]
@@ -61,10 +61,6 @@ size = Vector3(0.10067749, 1.1766357, 1.5472412)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0ld40"]
 size = Vector3(0.10067749, 1.3701172, 6.669922)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pm3ni"]
-albedo_texture = ExtResource("12_yc10j")
-uv1_triplanar = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_311cg"]
 size = Vector3(4.786865, 1, 2.5146484)
@@ -105,7 +101,7 @@ transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 1.702570
 
 [node name="Dog" parent="PlayerGroup" unique_id=1692485038 instance=ExtResource("5_tbgi4")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.95744, 0, -3.9563627)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.751144, 0, -3.9563627)
 
 [node name="StateMachine" type="Node" parent="." unique_id=1797829578 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("9_choun")
@@ -180,7 +176,7 @@ unique_name_in_owner = true
 
 [node name="Gate" parent="Levels/Level1" unique_id=203334108 instance=ExtResource("4_o6xl0")]
 unique_name_in_owner = true
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -31.662035, 0, 0)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -33.948624, 0, 0)
 
 [node name="CSGCylinder3D2" type="CSGCombiner3D" parent="Levels/Level1" unique_id=238243326]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.895, 0, 0)
@@ -195,57 +191,6 @@ collision_mask = 0
 size = Vector3(200, 0.5, 200)
 material = SubResource("StandardMaterial3D_1xwnf")
 metadata/_edit_lock_ = true
-
-[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Levels/Level1/CSGCylinder3D2" unique_id=458572666]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.752346, -0.25, 0)
-collision_layer = 8
-collision_mask = 0
-radius = 1.3
-height = 0.6
-material = ExtResource("8_0ld40")
-
-[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="Levels/Level1/CSGCylinder3D2" unique_id=1678516378]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.752346, -0.16445094, 0)
-operation = 2
-collision_layer = 8
-collision_mask = 0
-radius = 1.2
-height = 0.994
-material = ExtResource("8_0ld40")
-
-[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="Levels/Level1/CSGCylinder3D2" unique_id=370649257]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.62833, -0.25, 0)
-collision_layer = 8
-collision_mask = 0
-radius = 1.3
-height = 0.6
-material = ExtResource("8_0ld40")
-
-[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="Levels/Level1/CSGCylinder3D2" unique_id=912970767]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.62833, -0.16445094, 0)
-operation = 2
-collision_layer = 8
-collision_mask = 0
-radius = 1.2
-height = 0.994
-material = ExtResource("8_0ld40")
-
-[node name="CSGCylinder3D7" type="CSGCylinder3D" parent="Levels/Level1/CSGCylinder3D2" unique_id=1029149582]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3898563, -0.25, 0)
-collision_layer = 8
-collision_mask = 0
-radius = 1.3
-height = 0.6
-material = ExtResource("8_0ld40")
-
-[node name="CSGCylinder3D8" type="CSGCylinder3D" parent="Levels/Level1/CSGCylinder3D2" unique_id=22561847]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3898563, -0.16445094, 0)
-operation = 2
-collision_layer = 8
-collision_mask = 0
-radius = 1.2
-height = 0.994
-material = ExtResource("8_0ld40")
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="Levels/Level1" unique_id=1285775817]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -22.116035, 0.4, 0)
@@ -343,34 +288,6 @@ collision_mask = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Levels/Level1/ChangeRealityArea" unique_id=1187358541]
 shape = SubResource("BoxShape3D_0ld40")
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="Levels/Level1" unique_id=2126119787]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.237, 0.59643126, 6)
-use_collision = true
-collision_mask = 0
-size = Vector3(61.11267, 2.191864, 0.57373047)
-material = SubResource("StandardMaterial3D_pm3ni")
-
-[node name="CSGBox3D4" type="CSGBox3D" parent="Levels/Level1" unique_id=724477332]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.237, 0.41601133, -6)
-use_collision = true
-collision_mask = 0
-size = Vector3(61.113, 2.192, 0.574)
-material = SubResource("StandardMaterial3D_pm3ni")
-
-[node name="CSGBox3D5" type="CSGBox3D" parent="Levels/Level1" unique_id=1278243175]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 38.514, 0.5888629, -28)
-use_collision = true
-collision_mask = 0
-size = Vector3(40.852997, 2.1767273, 0.57373047)
-material = SubResource("StandardMaterial3D_pm3ni")
-
-[node name="CSGBox3D6" type="CSGBox3D" parent="Levels/Level1" unique_id=214122560]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 38.514, 0.78637266, 28)
-use_collision = true
-collision_mask = 0
-size = Vector3(40.852997, 2.5717468, 0.57373047)
-material = SubResource("StandardMaterial3D_pm3ni")
-
 [node name="NPCs" type="Node3D" parent="Levels/Level1" unique_id=1848000914]
 
 [node name="DogArea" type="Area3D" parent="Levels/Level1/NPCs" unique_id=645542927]
@@ -379,6 +296,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Levels/Level1/NPCs/DogArea" unique_id=1694628877]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.81918716, 0, 0)
 shape = SubResource("BoxShape3D_311cg")
 
 [node name="MailmanPath3D" type="Path3D" parent="Levels/Level1/NPCs" unique_id=1078573912]
@@ -401,6 +319,7 @@ collision_mask = 2
 monitoring = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Levels/Level1/MailmanArea" unique_id=738284723]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3485756, 0, 0)
 shape = SubResource("BoxShape3D_og1vs")
 
 [node name="StartRunning" type="Area3D" parent="Levels/Level1" unique_id=1959840812]
@@ -415,6 +334,30 @@ shape = SubResource("BoxShape3D_rsxcb")
 [node name="SpawnDogOutside" type="Marker3D" parent="Levels/Level1/StartRunning" unique_id=130730526]
 unique_name_in_owner = true
 transform = Transform3D(1.3113414e-07, 0, -0.9999999, 0, 1, 0, 0.9999999, 0, 1.3113414e-07, 2.0573025, 0.029, 0)
+
+[node name="PlayerHome" parent="." unique_id=756905701 instance=ExtResource("24_og1vs")]
+transform = Transform3D(5.284853e-07, 0, -7, 0, 7, 0, 7, 0, 5.284853e-07, -41.453, 0, 0)
+
+[node name="City" parent="." unique_id=492310844 instance=ExtResource("24_2wyq8")]
+transform = Transform3D(-3.059797e-07, 0, 7, 0, 7, 0, -7, 0, -3.059797e-07, -56.886135, 3.2531134e-14, -59.39809)
+
+[node name="City6" parent="." unique_id=271396545 instance=ExtResource("24_2wyq8")]
+transform = Transform3D(-3.059797e-07, 0, -7, 0, 7, 0, 7, 0, -3.059797e-07, -105.41197, 3.2531134e-14, 86.6974)
+
+[node name="City2" parent="." unique_id=13157222 instance=ExtResource("24_2wyq8")]
+transform = Transform3D(-3.059797e-07, 0, 7, 0, 7, 0, -7, 0, -3.059797e-07, -19.741508, 3.2531134e-14, 64.93923)
+
+[node name="City3" parent="." unique_id=1878667841 instance=ExtResource("24_2wyq8")]
+transform = Transform3D(-3.059797e-07, 0, 7, 0, 7, 0, -7, 0, -3.059797e-07, -19.741508, 3.2531134e-14, -97.99581)
+
+[node name="City4" parent="." unique_id=396006726 instance=ExtResource("24_2wyq8")]
+transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 64.29547, 3.2531134e-14, -55.826847)
+
+[node name="City5" parent="." unique_id=1265831398 instance=ExtResource("24_2wyq8")]
+transform = Transform3D(-7, 0, 6.119594e-07, 0, 7, 0, -6.119594e-07, 0, -7, 50.416306, 3.2531134e-14, 56.77084)
+
+[node name="City7" parent="." unique_id=1983769308 instance=ExtResource("24_2wyq8")]
+transform = Transform3D(-7, 0, 1.0569706e-06, 0, 7, 0, -1.0569706e-06, 0, -7, 24.586, 0, -16.3)
 
 [connection signal="body_entered" from="Levels/Level1/Deadzone" to="." method="_on_deadzone_body_entered"]
 [connection signal="body_entered" from="Levels/Level1/StopDogArea" to="Sequences/DogEscapeSequence" method="_on_stop_dog_area_body_entered"]
