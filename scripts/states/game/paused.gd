@@ -3,6 +3,7 @@ extends State
 @export var in_house: State
 @export var dog_area: Area3D
 @onready var mailman_area: Area3D = %MailmanArea
+@onready var animation_player: AnimationPlayer = $"../../PlayerGroup/Dog/DogGlb/AnimationPlayer"
 
 var enabled := false
 var dog_area_entered := false
@@ -14,6 +15,7 @@ func _ready() -> void:
 func enter() -> void:
 	mailman_area.hide()
 	enabled = true
+	animation_player.play("Dog1_Lay")
 
 func exit() -> void:
 	enabled = false
@@ -32,6 +34,8 @@ func physics_update(_delta: float) -> void:
 
 func _on_dog_area_entered(_body: Node3D) -> void:
 	dog_area_entered = true
+	animation_player.play("Dog1_Sit")
 
 func _on_dog_area_exit(_body: Node3D) -> void:
 	dog_area_entered = false
+	animation_player.play("Dog1_Lay_Start")

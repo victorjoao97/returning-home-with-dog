@@ -12,7 +12,8 @@ func enter() -> void:
 	var tween := create_tween()
 	tween.set_ease(Tween.EASE_IN_OUT)
 	tween.tween_property(mailman_path_follow_3d, "progress_ratio", 0, 5)
-
+	mailman.running()
+	mailman.rotate_y(PI)
 	dog_escape_sequence.start()
 	await tween.finished
 	mailman.queue_free.call_deferred()

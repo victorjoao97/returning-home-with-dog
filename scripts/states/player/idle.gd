@@ -1,5 +1,6 @@
 extends State
 @onready var movement_component: MovementComponent = %MovementComponent
+@onready var animation_player: AnimationPlayer = %AnimationPlayer
 
 @export var running_state: State
 @export var jumping_state: State
@@ -9,6 +10,7 @@ var enabled := false
 
 func enter() -> void:
 	enabled = true
+	animation_player.queue("idle/Root|Idle")
 
 func exit() -> void:
 	enabled = false

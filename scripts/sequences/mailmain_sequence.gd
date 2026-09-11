@@ -23,6 +23,7 @@ func start() -> void:
 	var tween := create_tween()
 	tween.set_ease(Tween.EASE_IN_OUT)
 	tween.tween_property(mailman_path_follow_3d, "progress_ratio", 1, 3)
+	mailman.running()
 
 func _on_mailman_area_body_entered(_body: Node3D) -> void:
 	mailman_entered = true
@@ -42,4 +43,4 @@ func try_interact() -> bool:
 	return true
 
 func _on_gate_animation_finished() -> void:
-	pass
+	mailman.stop()
