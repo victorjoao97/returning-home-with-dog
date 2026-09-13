@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://cbbyw4hppavto"]
+[gd_scene format=4 uid="uid://cbbyw4hppavto"]
 
 [ext_resource type="Script" uid="uid://b1g55nbtxtcjn" path="res://scenes/after_accident.gd" id="1_8e8d4"]
 [ext_resource type="PackedScene" uid="uid://bbrnnu73t40c2" path="res://scenes/player.tscn" id="1_r7rif"]
@@ -6,9 +6,29 @@
 [ext_resource type="PackedScene" uid="uid://dl4u7sjmbamyp" path="res://scenes/dog.tscn" id="3_0q4gc"]
 [ext_resource type="Script" uid="uid://ct2hukm0k3e2o" path="res://scripts/components/camera_component.gd" id="4_l0upd"]
 [ext_resource type="Script" uid="uid://dkhpqn6e3ryb1" path="res://scripts/components/follow_component.gd" id="5_2fude"]
-[ext_resource type="Material" uid="uid://dg2kaepe53imn" path="res://resources/floor_material.tres" id="6_5vhx3"]
+[ext_resource type="Script" uid="uid://fwq1s2avykcx" path="res://scripts/components/input_component.gd" id="7_cbeiu"]
 [ext_resource type="MeshLibrary" uid="uid://dxc00c0eqdj1p" path="res://resources/nature_meshlibrary.tres" id="8_ejucp"]
+[ext_resource type="PackedScene" uid="uid://c2piykr1uxesq" path="res://assets/nature-kit/plant_bush.glb" id="8_qavy0"]
 [ext_resource type="PackedScene" uid="uid://mcyvt7n66btp" path="res://assets/nature-kit/ground_pathOpen.glb" id="9_71436"]
+[ext_resource type="PackedScene" uid="uid://bsrnveceeiu7r" path="res://assets/nature-kit/plant_bushDetailed.glb" id="9_gp5wx"]
+[ext_resource type="PackedScene" uid="uid://cxsev1iq6l66l" path="res://assets/nature-kit/plant_bushLarge.glb" id="10_1mth5"]
+[ext_resource type="PackedScene" uid="uid://cas4k5lt0p1aa" path="res://assets/nature-kit/rock_tallA.glb" id="10_adt6j"]
+[ext_resource type="PackedScene" uid="uid://d1uraw6thoe2i" path="res://assets/nature-kit/plant_bushLargeTriangle.glb" id="11_5qeeb"]
+[ext_resource type="PackedScene" uid="uid://c68pujjwvo4b5" path="res://assets/nature-kit/rock_tallB.glb" id="11_qiols"]
+[ext_resource type="PackedScene" uid="uid://dwdbwbfm7hbvy" path="res://assets/nature-kit/rock_tallD.glb" id="12_nv0bh"]
+[ext_resource type="PackedScene" uid="uid://d2bpamoibfagf" path="res://assets/nature-kit/plant_bushSmall.glb" id="12_ta6oj"]
+[ext_resource type="PackedScene" uid="uid://d34a8fb47vx14" path="res://assets/nature-kit/rock_tallE.glb" id="13_ih0g2"]
+[ext_resource type="PackedScene" uid="uid://c6chlcgptw33i" path="res://assets/nature-kit/plant_bushTriangle.glb" id="13_lquge"]
+[ext_resource type="PackedScene" uid="uid://b6udapd2q54xv" path="res://assets/nature-kit/plant_flatShort.glb" id="14_0ujs2"]
+[ext_resource type="PackedScene" uid="uid://r2urruba0sg3" path="res://assets/nature-kit/ground_riverStraight.glb" id="14_qiols"]
+[ext_resource type="PackedScene" uid="uid://b8v2nnb4750te" path="res://assets/nature-kit/plant_flatTall.glb" id="15_o4dpm"]
+[ext_resource type="PackedScene" uid="uid://co7wv00kc5877" path="res://assets/nature-kit/bridge_side_stone.glb" id="16_1yqb5"]
+[ext_resource type="Script" uid="uid://b8y71wduh5trf" path="res://scripts/dog_boat_area.gd" id="16_vyf0d"]
+[ext_resource type="PackedScene" uid="uid://b8q2llpcky1qm" path="res://assets/nature-kit/tree_palmBend.glb" id="26_e7ymt"]
+[ext_resource type="PackedScene" uid="uid://bo45ox05rt2c0" path="res://assets/nature-kit/tree_palmDetailedShort.glb" id="27_xeeqk"]
+[ext_resource type="PackedScene" uid="uid://ddvthiwy6sor6" path="res://assets/nature-kit/canoe.glb" id="29_gp5wx"]
+[ext_resource type="Script" uid="uid://b5vsqt62h6nvq" path="res://scripts/drop_dog_boat_area.gd" id="29_qavy0"]
+[ext_resource type="PackedScene" uid="uid://btsx64wresjdd" path="res://assets/nature-kit/rock_largeA.glb" id="29_tdk55"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bhnmm"]
 sky_top_color = Color(0, 0, 0, 1)
@@ -20,13 +40,97 @@ ground_horizon_color = Color(0.08792951, 0.087991215, 0.17957559, 1)
 sky_material = SubResource("ProceduralSkyMaterial_bhnmm")
 
 [sub_resource type="Environment" id="Environment_l0upd"]
-background_mode = 2
+background_mode = 1
+background_color = Color(0.08235294, 0.101960786, 0.1254902, 1)
 sky = SubResource("Sky_0q4gc")
+ambient_light_color = Color(0.45882353, 0.5019608, 0.54901963, 1)
+tonemap_mode = 3
+tonemap_exposure = 0.8
 glow_enabled = true
+fog_enabled = true
+fog_light_color = Color(0.1882353, 0.22352941, 0.2627451, 1)
+fog_density = 0.0384
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_1xwnf"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_1xwnf"]
-vertices = PackedVector3Array(-149.5, 0.45, -149.5, -149.5, 0.45, 149.5, 149.5, 0.45, 149.5, 149.5, 0.45, -149.5)
-polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+vertices = PackedVector3Array(1.5, 0.4, 4.75, 4.75, 0.4, 1.25, 4.5, 0.4, -4.5, -4.5, 0.4, -4.5, -4.5, 0.4, 4.5, 6.25, 0.4, 10.5, 6.5, 0.4, 11, 10.75, 0.4, 9.75, 1.5, 0.4, 10.5, 10.75, 0.4, 1.25, 22.5, 0.4, 12.75, 22.75, 0.4, 13.25, 24.5, 0.4, 11.75, 15.25, 0.4, 10, 14.75, 0.4, 10.25, 16.25, 0.4, 12.75, 24.5, 0.4, 3.5, 15.25, 0.4, 3.5, 15.75, 0.4, 13, 11, 0.4, 10.25, 6.5, 0.4, 19.5, 15.75, 0.4, 19.5, 24.75, 0.4, 12.25, 24, 0.4, 21.5, 24.25, 0.4, 22, 32.25, 0.4, 21.5, 32, 0.4, 12.25, 22.75, 0.4, 21.5, 33.5, 0.4, 30.75, 33.75, 0.4, 21.5, 24.25, 0.4, 30.75, 44.25, 0.4, 30.75, 44.25, 0.4, 21.5, 29.75, 0.4, 67.25, 29.75, 0.4, 76.5, 39, 0.4, 76.5, 39, 0.4, 67.25)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 4), PackedInt32Array(2, 4, 3), PackedInt32Array(7, 6, 5), PackedInt32Array(8, 0, 5), PackedInt32Array(5, 0, 1), PackedInt32Array(5, 1, 7), PackedInt32Array(7, 1, 9), PackedInt32Array(10, 12, 11), PackedInt32Array(13, 15, 14), PackedInt32Array(10, 15, 12), PackedInt32Array(12, 15, 13), PackedInt32Array(12, 13, 17), PackedInt32Array(12, 17, 16), PackedInt32Array(18, 14, 15), PackedInt32Array(6, 7, 19), PackedInt32Array(14, 18, 19), PackedInt32Array(19, 18, 6), PackedInt32Array(6, 18, 21), PackedInt32Array(6, 21, 20), PackedInt32Array(22, 11, 12), PackedInt32Array(24, 23, 25), PackedInt32Array(25, 23, 11), PackedInt32Array(25, 11, 22), PackedInt32Array(25, 22, 26), PackedInt32Array(23, 27, 11), PackedInt32Array(25, 29, 24), PackedInt32Array(24, 29, 28), PackedInt32Array(24, 28, 30), PackedInt32Array(32, 31, 29), PackedInt32Array(29, 31, 28), PackedInt32Array(36, 35, 33), PackedInt32Array(33, 35, 34)]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4gcr2"]
+resource_name = "wood"
+albedo_color = Color(1, 0.7716358, 0.6532799, 1)
+metallic = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8j35c"]
+resource_name = "woodBarkDark"
+albedo_color = Color(0.9063318, 0.71026444, 0.6410877, 1)
+metallic = 1.0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_eexrs"]
+_surfaces = [{
+"aabb": AABB(-0.2817982, -3.2560233e-32, -0.24404442, 0.5635964, 0.2, 0.48808885),
+"format": 34896613377,
+"index_count": 192,
+"index_data": PackedByteArray("AAABAAIAAwABAAAAAQADAAQAAAAFAAMABAADAAUABAAGAAEABgACAAEAAgAHAAAABgAIAAIAAgAIAAkACQAIAAYACQAHAAIACgAGAAQABgAKAAkABAALAAoABQALAAQADAAJAAoADAAKAAsADQALAAUADQAMAAsABwAJAA4AAAAHAA4ADAAPAAkACQAPAA4ADwAMABAAEAAMAA0ABQAAABEAAAAOABEABQASAA0AEQASAAUAEwARAA4AEgARABMADgAPABQAEAAUAA8ADQASABUAEwAVABIAFQAWAA0ADQAWABAAFwAVABMAFgAVABcADgAYABMAFAAYAA4AGQAQABYAFwAZABYAGgAUABAAGAAUABoAGQAbABAAGwAaABAAHAAbABkAGgAbABwAGQAdABwAHgAdABkAGQAXAB4AHAAfABoAIAAeABcAIQAaAB8AGAAaACEAHwAiACEAIQAiACAAGAAhACMAIAAjACEAFwAjACAAEwAYACMAEwAjABcA"),
+"name": "wood",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 36,
+"vertex_data": PackedByteArray("IE3/f0AaAACTUgAAJyUAAGutAAAnJQAAJyUAAP9/AACTUgAA19oAAEAa/3//fwAAa60AANfaAADesv9/QBoAANfaAAD/fwAAvuX/f/9/AADesv9/vuUAACBN/3++5QAA/7//f///AAD/P/9///8AAP+//38AAAAA////f/9/AAD/v/////8AAP8//38AAAAAAAD/f/9/AAD/P///AAAAAP//////fwAAAAD///9/AAD/P/////8AAEAa////fwAA/7///wAAAAAgTf//vuUAAL7l////fwAA3rL//77lAADesv+/vuUAACBN/7++5QAAQBr/v/9/AAC+5f+//38AACBN/79AGgAA3rL//0AaAADesv+/QBoAACBN//9AGgAA")
+}, {
+"aabb": AABB(-0.22399999, 0.15, -0.19398968, 0.44799998, 1e-05, 0.38797936),
+"format": 34896613377,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAgADAAAAAgAEAAMABAAFAAMA"),
+"name": "woodBarkDark",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 6,
+"vertex_data": PackedByteArray("/z8AAP//AAAAAAAA/38AAP8/AAAAAAAA/78AAP//AAD/vwAAAAAAAP//AAD/fwAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_xjffk"]
+resource_name = "pot_large_Mesh pot_large"
+_surfaces = [{
+"aabb": AABB(-0.2817982, -3.2560233e-32, -0.24404442, 0.5635964, 0.2, 0.48808885),
+"attribute_data": PackedByteArray("3rLMSmutUnuTUlJ7IE3MSpNSUnsgTcxK3rLMSmutUnv/v49c/z+PXP8/Di3/vw4t3rIOLd6yzkQgTc5EIE0OLSBNDi3esg4t3rLORCBNzkT/vyEY//8QjL7lEIz/v///3rLpL96yN+j/PyEY/z///yBN6S8gTTfoQBoQjAAAEIwgTcxK3rLMSmutUnuTUlJ7a61Se5NSUnsgTcxK3rLMSv8///8AABCMQBoQjP8/IRggTTfoIE3pL/+/////vyEY3rI36N6y6S++5RCM//8QjN6yzEprrVJ7k1JSeyBNzEresg4t3rLORCBNzkQgTQ4t/78OLf+/j1z/P49c/z8OLf+/j1z/P49c/z8OLf+/Di3ess5EIE3ORCBNDi3esg4ta63IOdfaEIxrrVjek1JY3pNSyDknJRCMIE3MSt6yzEprrVJ7k1JSe/+/Di3/v49c/z+PXP8/Di3/Pw4t/78OLf+/j1z/P49cIE0OLd6yDi3ess5EIE3ORN6yzkQgTc5EIE0OLd6yDi3/Pw4t/78OLf+/j1z/P49c"),
+"format": 34896613399,
+"index_count": 192,
+"index_data": PackedByteArray("AAABAAIAAgADAAAABAAFAAYABgAHAAQACAAJAAoACgALAAgADAANAA4ADgAPAAwAEAARABIAEgATABAAFAAVABYAFgAVABcAFgAYABQAFwAZABYAGAAaABQAFwAbABkAGAAcABoAGwAdABkAHAAeABoAGwAeAB0AHgAfABoAGwAfAB4AIAAhACIAIgAjACAAJAAlACYAJgAnACQAKAApACoAKgApACsAKgAsACgAKwAtACoALAAuACgAKwAvAC0ALAAwAC4ALwAxAC0AMAAyAC4ALwAyADEAMgAzAC4ALwAzADIANAA1ADYANgA3ADQAOAA5ADoAOgA7ADgAPAA9AD4APgA/ADwAQABBAEIAQgBDAEAARABFAEYARgBHAEQASABJAEoASgBLAEgASwBMAEgASwBNAEwATgBPAFAAUABRAE4AUgBTAFQAVABVAFIAVgBXAFgAWABZAFYAWgBbAFwAXABdAFoAXgBfAGAAYABhAF4AYgBjAGQAZABlAGIA"),
+"material": SubResource("StandardMaterial3D_4gcr2"),
+"name": "wood",
+"primitive": 3,
+"uv_scale": Vector4(22.188837, 21.216097, 0, 0),
+"vertex_count": 102,
+"vertex_data": PackedByteArray("IE3/f0Aa//+TUgAAJyX//2utAAAnJf//3rL/f0Aa//9rrQAA19pmq96y/3++5WarvuX/f/9/ZqvX2gAA/39mq/+//38AAFTV////f/9/VNX//////39U1f+///8AAFTV3rL//0AaAIDesv+/QBoAgCBN/79AGgCAIE3//0AaAIC+5f///39U1d6y//++5VTV3rL/v77lVNW+5f+//39U1f8//38AAP//AAD/f/9///9AGv9//3////8//3//////IE3/f0Aa//8gTf9/vuX///+//38AAP///7//f//////esv9/QBr//96y/3++5f//vuX/f/9///////9//3///yBN/39AGpPVQBr/f/9/k9UnJQAA/3+T1ZNSAAAnJZPVa60AACclk9XX2gAA/3+T1b7l/3//f5PV3rL/f0Aak9X/P///////vwAA////f/+/QBr///9//7//P///AAD/vyBN//++5f+/IE3//0Aa/7//v///////v/+///8AAP+/3rL//77l/7/esv//QBr/v77l////f/+///////9//7/esv9/vuVYiGutAADX2liIk1IAANfaWIggTf9/vuVYiCBN//++5f//IE3/v77l///esv+/vuX//96y//++5f///z///wAA////P/9/AAD///+//38AAP///7///wAA//////9//3+qqv+//3///6qq/7//////qqr//////3+qqkAa/7//f1TVIE3/v77lVNUgTf//vuVU1UAa////f1TVk1IAACcl//8nJQAA/3///5NSAADX2v//a60AANfa//9rrQAAJyX//9faAAD/f///QBr/f/9/ZqsgTf9/vuVmq5NSAADX2marJyUAAP9/Zqv/v/////8AgP+//3///wCA/z//f///AID/P/////8AgP8///8AAFTVAAD///9/VNUAAP9//39U1f8//38AAFTV3rL//0Aaqqq+5f///3+qqr7l/7//f6qq3rL/v0AaqqogTf+/QBqqqkAa/7//f6qqQBr///9/qqogTf//QBqqqgAA////f6qq/z//////qqr/P/9///+qqgAA/3//f6qq7ov//+6L///ui///7ov//zNuEhwzbhIcM24SHDNuEhz/fwAA/38AAP9/AAD/fwAA/3////9/////f////3////9/////f////3////9/////f/8//3//P/9//z//f/8//3//P/9//z//f/8//3//P/9//z//f/8//3//P/9//z8ibnX5Im51+SJudfkibnX5dXncEXV53BF1edwRdXncEf///3////9/////f////3////9/////f////3////9/////f////3////9/////fwAA/38AAP9/AAD/fwAA/3//f////3////9/////f////3////9/////f////3////9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/3//P/9//z//f/8//3//P/9//z//f/8/7WMz7u1jM+7tYzPu7WMz7v9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/AAD/fwAA/38AAP9/AAD/f////3////9/////f///")
+}, {
+"aabb": AABB(-0.22399999, 0.15, -0.19398968, 0.44799998, 1e-05, 0.38797936),
+"attribute_data": PackedByteArray("/z///wAA0Y7/P6Md/7////+/ox3//9GO"),
+"format": 34896613399,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAgADAAAAAgAEAAMABAAFAAMA"),
+"material": SubResource("StandardMaterial3D_8j35c"),
+"name": "woodBarkDark",
+"primitive": 3,
+"uv_scale": Vector4(17.637794, 17.274778, 0, 0),
+"vertex_count": 6,
+"vertex_data": PackedByteArray("/z8AAP///78AAAAA/3//v/8/AAAAAP+//78AAP///7//vwAAAAD/v///AAD/f/+/////f////3////9/////f////3////9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_eexrs")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_sgh1w"]
+points = PackedVector3Array(-0.1408991, 0.1, -0.24404442, -0.2817982, 0.1, 0, -0.1408991, 0.2, -0.24404442, 0.14084393, 0.1, -0.24404442, -0.100019604, -3.2560233e-32, -0.17323905, -0.2817982, 0.2, 0, -0.20003921, -3.2560233e-32, 0, -0.1408991, 0.1, 0.24404442, 0.14084393, 0.2, -0.24404442, 0.09996444, -3.2560233e-32, -0.17323905, 0.2817982, 0.1, 0, -0.1408991, 0.2, 0.24404442, -0.100019604, -3.2560233e-32, 0.17319128, 0.14084393, 0.1, 0.24404442, 0.2817982, 0.2, 0, 0.19998404, -3.2560233e-32, 0, 0.09996444, -3.2560233e-32, 0.17319128, 0.14084393, 0.2, 0.24404442)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rerfc"]
+radius = 0.63427734
+height = 1.2792969
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1xwnf"]
+radius = 2.2822266
+height = 4.564453
 
 [node name="AfterAccident" type="Node3D" unique_id=667853083]
 script = ExtResource("1_8e8d4")
@@ -36,10 +140,12 @@ environment = SubResource("Environment_l0upd")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=208327202]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+light_color = Color(0.44313726, 0.5019608, 0.5882353, 1)
+light_energy = 0.35
 shadow_enabled = true
-sky_mode = 2
 
 [node name="Player" parent="." unique_id=1865470289 instance=ExtResource("1_r7rif")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.76197, 0, 23.495451)
 
 [node name="SpringArmPivot" type="Node3D" parent="Player" unique_id=1908051032]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.714438, 0)
@@ -47,13 +153,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.714438, 0)
 [node name="CameraController" parent="Player/SpringArmPivot" unique_id=429333468 instance=ExtResource("2_0q4gc")]
 
 [node name="Dog" parent="." unique_id=1692485038 instance=ExtResource("3_0q4gc")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.7993506, 0, -1.4346676)
-
-[node name="CollisionAhead" parent="Dog" index="0" unique_id=1180794224]
-enabled = false
-
-[node name="CollisionGround" parent="Dog" index="1" unique_id=58806975]
-enabled = false
+unique_name_in_owner = true
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 31.962973, 0, 22.060452)
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="Dog" unique_id=149391891]
 debug_path_custom_color = Color(0.97083646, 0, 0.18145418, 1)
@@ -73,16 +174,42 @@ navigation_agent = NodePath("../Dog/NavigationAgent3D")
 follow_distance = 3.5
 metadata/_custom_type_script = "uid://dkhpqn6e3ryb1"
 
-[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1727416343]
-navigation_mesh = SubResource("NavigationMesh_1xwnf")
-enabled = false
+[node name="InputComponent" type="Node" parent="." unique_id=1803652630]
+unique_name_in_owner = true
+script = ExtResource("7_cbeiu")
+metadata/_custom_type_script = "uid://fwq1s2avykcx"
 
-[node name="Floor" type="CSGBox3D" parent="NavigationRegion3D" unique_id=1951110903]
-visible = false
-use_collision = true
-collision_mask = 0
-size = Vector3(300, 0.1, 300)
-material = ExtResource("6_5vhx3")
+[node name="Floor" type="Area3D" parent="." unique_id=1618587760]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.7289816, 0)
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=686355920]
+shape = SubResource("WorldBoundaryShape3D_1xwnf")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1727416343]
+unique_name_in_owner = true
+navigation_mesh = SubResource("NavigationMesh_1xwnf")
+
+[node name="ground_pathOpen2" parent="NavigationRegion3D" unique_id=1214714789 instance=ExtResource("9_71436")]
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0)
+
+[node name="ground_pathOpen3" parent="NavigationRegion3D" unique_id=26898785 instance=ExtResource("9_71436")]
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 6.1499615, 0, 5.9319644)
+
+[node name="ground_pathOpen4" parent="NavigationRegion3D" unique_id=849018456 instance=ExtResource("9_71436")]
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 11.063862, 0, 14.946189)
+
+[node name="ground_pathOpen5" parent="NavigationRegion3D" unique_id=631122716 instance=ExtResource("9_71436")]
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 19.824091, 0, 8.143043)
+
+[node name="ground_pathOpen6" parent="NavigationRegion3D" unique_id=1106950764 instance=ExtResource("9_71436")]
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 27.334003, 0, 16.764442)
+
+[node name="ground_pathOpen7" parent="NavigationRegion3D" unique_id=334542040 instance=ExtResource("9_71436")]
+transform = Transform3D(21, 0, 0, 0, 1, 0, 0, 0, 10, 34.331295, 0, 26.191326)
+
+[node name="ground_pathOpen8" parent="NavigationRegion3D" unique_id=1190516467 instance=ExtResource("9_71436")]
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 34.331295, 0, 71.92581)
 
 [node name="GridMap" type="GridMap" parent="." unique_id=52104561]
 visible = false
@@ -94,11 +221,136 @@ data = {
 "cells": PackedInt32Array(0, 1, 1441930, 65535, 1, 1048714, 65535, 2, 1048714, 65535, 3, 1048714, 0, 5, 1441930, 65535, 4, 1048714, 65535, 5, 1048714, 0, 2, 1441930, 0, 3, 1441930, 0, 4, 1441930)
 }
 
-[node name="ground_pathOpen2" parent="." unique_id=1214714789 instance=ExtResource("9_71436")]
-transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0.2221899, 0.15000018, -0.0770998)
+[node name="rock_tallA2" parent="." unique_id=315529389 instance=ExtResource("10_adt6j")]
+transform = Transform3D(50, 0, 0, 0, 48.29629, -12.940952, 0, 12.940952, 48.29629, -47.101013, -0.10000153, 88.38075)
+
+[node name="rock_tallA3" parent="." unique_id=872767466 instance=ExtResource("10_adt6j")]
+transform = Transform3D(49.629185, -5.8710594, 1.5731456, 6.0781674, 47.938107, -12.844977, 0, 12.940951, 48.296288, 100.81004, -0.10000153, 127.11935)
+
+[node name="rock_tallA4" parent="." unique_id=1197138493 instance=ExtResource("10_adt6j")]
+transform = Transform3D(49.629185, -5.8710594, 1.5731456, 6.0781674, 47.938107, -12.844977, 0, 12.940951, 48.296288, -24.333748, -0.10000153, 176.61026)
+
+[node name="rock_tallB2" parent="." unique_id=776906921 instance=ExtResource("11_qiols")]
+transform = Transform3D(29.999998, 0, 0, 0, 28.977772, 7.76457, 0, -7.76457, 28.977772, -24.858866, -0.09999962, 10.125343)
+
+[node name="rock_tallB3" parent="." unique_id=1870016770 instance=ExtResource("11_qiols")]
+transform = Transform3D(14.488886, -7.7645707, 25.09549, 3.8822854, 28.977772, 6.724316, -25.980762, 0, 14.999999, 68.43108, -0.09999962, 95.47756)
+
+[node name="rock_tallD2" parent="." unique_id=1092908174 instance=ExtResource("12_nv0bh")]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 41.461205, -0.10000153, -1.3034725)
+
+[node name="rock_tallE2" parent="." unique_id=854376303 instance=ExtResource("13_ih0g2")]
+transform = Transform3D(35, 0, 0, 0, 35, 0, 0, 0, 35, 7.760994, -0.10000153, -27.916801)
+
+[node name="Bridge" type="Node3D" parent="." unique_id=208856451]
+
+[node name="ground_riverStraight2" parent="Bridge" unique_id=1398677162 instance=ExtResource("14_qiols")]
+transform = Transform3D(9.058667, 0, -33.807404, 0, 1, 0, 33.807404, 0, 9.058667, 32.96873, -0.26035643, 50.914)
+
+[node name="ground_riverStraight3" parent="Bridge" unique_id=1272391589 instance=ExtResource("14_qiols")]
+transform = Transform3D(9.058668, 0, -33.807407, 0, 1, 0, 33.807407, 0, 9.058668, -0.5638485, -0.26035643, 59.46411)
+
+[node name="ground_riverStraight4" parent="Bridge" unique_id=192527636 instance=ExtResource("14_qiols")]
+transform = Transform3D(-9.058671, 0, 33.807404, 0, 1, 0, -33.807404, 0, -9.058671, 66.521194, -0.26035643, 42.37158)
+
+[node name="bridge_side_stone2" parent="Bridge" unique_id=1685034133 instance=ExtResource("16_1yqb5")]
+transform = Transform3D(-3.059797e-07, 0, -7, 0, 7, 0, 7, 0, -3.059797e-07, 34.918137, -0.09430075, 33.857624)
+
+[node name="bridge_side_stone3" parent="Bridge" unique_id=38268889 instance=ExtResource("16_1yqb5")]
+transform = Transform3D(5.284853e-07, 0, 7, 0, 7, 0, -7, 0, 5.284853e-07, 34.918137, -0.3784411, 63.378136)
+
+[node name="DogBoat" type="Node3D" parent="." unique_id=1144829151]
+unique_name_in_owner = true
+transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 23.957367, 0.060795546, 26.94498)
+
+[node name="pot_large" type="MeshInstance3D" parent="DogBoat" unique_id=261042522]
+transform = Transform3D(0.7777871, 0.162675, 0.6071113, 0, 0.96592593, -0.25881907, -0.62852794, 0.20130612, 0.75128466, 0, -0.050000004, 0)
+mesh = SubResource("ArrayMesh_xjffk")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="DogBoat/pot_large" unique_id=1096326811]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DogBoat/pot_large/StaticBody3D" unique_id=1652391309]
+shape = SubResource("ConvexPolygonShape3D_sgh1w")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="DogBoat" unique_id=829446577]
+transform = Transform3D(1, 4.4703487e-08, 1.3411046e-07, -4.4703487e-08, 1, 0, -1.3411046e-07, -5.9952056e-15, 1, 0.015816212, 0.16088295, -0.016111374)
+distance_fade_enabled = true
+distance_fade_begin = 2.0
+distance_fade_length = 5.0
+
+[node name="DogBoatArea" type="Area3D" parent="DogBoat" unique_id=331349261]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("16_vyf0d")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DogBoat/DogBoatArea" unique_id=1425254600]
+transform = Transform3D(1, 0, 0, 0, -4.371138e-08, 1, 0, -0.99999994, -4.371139e-08, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_rerfc")
+
+[node name="DogBoatProps" type="Node3D" parent="." unique_id=455561576]
+
+[node name="tree_palmBend2" parent="DogBoatProps" unique_id=1482590251 instance=ExtResource("26_e7ymt")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 27.924786, -0.050000384, 26.039917)
+
+[node name="tree_palmDetailedShort2" parent="DogBoatProps" unique_id=634040386 instance=ExtResource("27_xeeqk")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 26.881596, -0.05000086, 22.425539)
+
+[node name="rock_tallA3" parent="DogBoatProps" unique_id=776304678 instance=ExtResource("10_adt6j")]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 24.09271, -0.050000023, 20.483606)
+
+[node name="rock_tallA4" parent="DogBoatProps" unique_id=484457749 instance=ExtResource("10_adt6j")]
+transform = Transform3D(1.5529144, 0, 5.795555, 0, 6, 0, -5.795555, 0, 1.5529144, 22.61201, -1.7148547, 23.737654)
+
+[node name="rock_largeA2" parent="DogBoatProps" unique_id=1264377829 instance=ExtResource("29_tdk55")]
+transform = Transform3D(1.7320508, 0, -1, 0, 2, 0, 1, 0, 1.7320508, 23.436192, -1.1920929e-07, 26.266956)
+
+[node name="plant_bush2" parent="DogBoatProps" unique_id=1056880569 instance=ExtResource("8_qavy0")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 26.23828, -0.049999908, 23.876183)
+
+[node name="plant_bushDetailed2" parent="DogBoatProps" unique_id=312949294 instance=ExtResource("9_gp5wx")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 27.105093, -0.04999979, 30.131872)
+
+[node name="plant_bushLarge2" parent="DogBoatProps" unique_id=280319148 instance=ExtResource("10_1mth5")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 26.09932, -0.050000027, 27.188028)
+
+[node name="plant_bushLargeTriangle2" parent="DogBoatProps" unique_id=398160145 instance=ExtResource("11_5qeeb")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 26.110344, -0.049999908, 29.321476)
+
+[node name="plant_bushSmall2" parent="DogBoatProps" unique_id=1398822815 instance=ExtResource("12_ta6oj")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 26.90953, -0.049999908, 25.912102)
+
+[node name="plant_bushTriangle2" parent="DogBoatProps" unique_id=1094072406 instance=ExtResource("13_lquge")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 27.53418, -0.04999979, 27.560915)
+
+[node name="plant_flatShort2" parent="DogBoatProps" unique_id=1793807688 instance=ExtResource("14_0ujs2")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 25.22826, -0.04999979, 28.891996)
+
+[node name="plant_flatTall2" parent="DogBoatProps" unique_id=2145325766 instance=ExtResource("15_o4dpm")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 25.77927, -0.04999979, 31.716106)
+
+[node name="DropDogBoatArea" type="Area3D" parent="." unique_id=2048234849]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.823112, 0, 29.560312)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("29_qavy0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DropDogBoatArea" unique_id=601384380]
+shape = SubResource("CapsuleShape3D_1xwnf")
+
+[node name="canoe2" parent="." unique_id=1836469917 instance=ExtResource("29_gp5wx")]
+transform = Transform3D(3.9574065, 2.9239023, 3.4336176, -3.5032587, 4.869831, -0.10924004, -2.8400905, -1.9327576, 4.919181, 35.01021, 1.1828125, 61.536324)
+
+[node name="OmniLight3D" type="SpotLight3D" parent="." unique_id=1237446624]
+transform = Transform3D(-0.7476704, 0.5767345, -0.32919037, 0.2859195, 0.72699314, 0.62428445, 0.5993655, 0.37263712, -0.70845085, 34.659283, 5.4465666, 56.88636)
+spot_range = 9.801534
+spot_angle = 48.415028
 
 [connection signal="following" from="FollowComponent" to="." method="_on_follow_component_following"]
 [connection signal="stopped" from="FollowComponent" to="." method="_on_follow_component_stopped"]
+[connection signal="body_entered" from="Floor" to="." method="_on_floor_body_entered"]
+[connection signal="body_entered" from="DogBoat/DogBoatArea" to="DogBoat/DogBoatArea" method="_on_body_entered"]
+[connection signal="body_exited" from="DogBoat/DogBoatArea" to="DogBoat/DogBoatArea" method="_on_body_exited"]
+[connection signal="body_entered" from="DropDogBoatArea" to="DropDogBoatArea" method="_on_body_entered"]
+[connection signal="body_exited" from="DropDogBoatArea" to="DropDogBoatArea" method="_on_body_exited"]
 
 [editable path="Player/SpringArmPivot/CameraController"]
-[editable path="Dog"]

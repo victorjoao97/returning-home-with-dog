@@ -254,6 +254,7 @@ metadata/_custom_type_script = "uid://dk7ijgqf6ci5"
 [node name="Package" parent="." unique_id=1476477056 instance=ExtResource("8_smehm")]
 transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 1, 0, 1.271, -0.492)
 visible = false
+use_collision = false
 
 [node name="characterMedium" type="Node3D" parent="." unique_id=985401929]
 transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, 0, 0, 0)

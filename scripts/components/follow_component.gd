@@ -10,7 +10,7 @@ class_name FollowComponent extends Node
 @export var deceleration := 15.0
 
 @export_category("Navigation")
-@export var time := 0.0
+@export var time := 1.0
 @export var follow_distance := 2.0
 
 @export_category("Rotation")

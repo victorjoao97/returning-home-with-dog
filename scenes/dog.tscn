@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://b42sllnq0f0il" path="res://scripts/states/dog/idle.gd" id="4_iaoh4"]
 [ext_resource type="Script" uid="uid://cg44e3vkiky32" path="res://scripts/states/dog/running.gd" id="5_i2xh6"]
 [ext_resource type="Script" uid="uid://dk7ijgqf6ci5" path="res://scripts/components/movement_component.gd" id="6_i2xh6"]
-[ext_resource type="Texture2D" uid="uid://cfpgvjgbkiv5c" path="res://assets/Dog/BlackDog.png" id="6_iaoh4"]
+[ext_resource type="Material" uid="uid://bd1uyo6dmjghw" path="res://resources/dog_material.tres" id="6_iaoh4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_311cg"]
 albedo_color = Color(0, 0.62380743, 0.9406124, 1)
@@ -163,9 +163,6 @@ bind/36/pose = Transform3D(-0.43296474, 0.006797579, 0.0016988588, -0.00632207, 
 bind/37/name = &"toe.R"
 bind/37/bone = -1
 bind/37/pose = Transform3D(0.4330215, 2.8802635e-06, -1.4204267e-06, -1.2825423e-07, -0.17582701, -0.39571783, -3.2047767e-06, 0.39571765, -0.17582704, -0.17699467, 0.6107857, 0.17955647)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_laypt"]
-albedo_texture = ExtResource("6_iaoh4")
 
 [sub_resource type="Animation" id="Animation_mwnwk"]
 resource_name = "Dog1_Bark"
@@ -2885,7 +2882,7 @@ bones/37/scale = Vector3(0.9999999, 0.99999964, 1.0000001)
 mesh = SubResource("ArrayMesh_pkm1h")
 skin = SubResource("Skin_1o0i1")
 skeleton = NodePath("..")
-surface_material_override/0 = SubResource("StandardMaterial3D_laypt")
+surface_material_override/0 = ExtResource("6_iaoh4")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="DogGlb" unique_id=957217840]
 unique_name_in_owner = true
