@@ -2572,10 +2572,12 @@ mesh = SubResource("CapsuleMesh_1xwnf")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=953852445]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.5, 0)
 shape = SubResource("CapsuleShape3D_laypt")
+disabled = true
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=2001431463]
 transform = Transform3D(1, 0, 0, 0, 0.49999997, 0.8660254, 0, -0.8660254, 0.49999997, 0, 0.9418318, -0.61203456)
 shape = SubResource("CapsuleShape3D_i2xh6")
+disabled = true
 
 [node name="StateMachine" type="Node" parent="." unique_id=823413297 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_gmowd")

@@ -1,5 +1,4 @@
 extends State
-@onready var animation_player: AnimationPlayer = %AnimationPlayer
 
 @export var idle_state: State
 @export var running_state: State
@@ -11,7 +10,6 @@ var enabled := false
 func enter() -> void:
 	enabled = true
 	movement_component.jump()
-	animation_player.play("jump/Root|Jump")
 
 func exit() -> void:
 	enabled = false
