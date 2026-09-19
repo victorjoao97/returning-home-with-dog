@@ -1,6 +1,0 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://bd1uyo6dmjghw"]
-
-[ext_resource type="Texture2D" uid="uid://cfpgvjgbkiv5c" path="res://assets/Dog/BlackDog.png" id="1_mrk65"]
-
-[resource]
-albedo_texture = ExtResource("1_mrk65")
