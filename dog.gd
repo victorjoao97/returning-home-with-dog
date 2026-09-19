@@ -4,15 +4,33 @@ extends CharacterBody3D
 
 const SPEED := 4.0
 const GRAVITY := -12.0
-const MIN_DISTANCE := 3.5
+const MIN_DISTANCE := 1.5
+const MAX_DISTANCE := 3.5
+const DISTANCE_CHANGE_TIME := 0.8
 
+var target_distance := 3.5
+var follow_distance := 3.5
+var distance_timer := 0.0
 var needs_following := true
 
 func _physics_process(delta: float) -> void:
 	if not needs_following:
 		return
 
-	var follow_position := player.global_position - player.last_direction * MIN_DISTANCE
+	distance_timer -= delta
+
+	if distance_timer <= 0.0:
+		target_distance = randf_range(MIN_DISTANCE, MAX_DISTANCE)
+		distance_timer = DISTANCE_CHANGE_TIME
+
+	follow_distance = lerpf(
+		follow_distance,
+		target_distance,
+		4.0 * delta
+	)
+
+	var follow_position := player.global_position \
+		- player.last_direction * follow_distance
 
 	var distance := global_position.distance_to(follow_position)
 
@@ -35,5 +53,5 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
-func _on_game_dog_following() -> void:
-	needs_following = !needs_following
+func _on_game_dog_following(value: bool) -> void:
+	needs_following = value

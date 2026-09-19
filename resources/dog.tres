@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bb3mfug3a16nd"]
+
+[ext_resource type="Texture2D" uid="uid://47hlyr4xvopk" path="res://assets/prototypes/Green/texture_06.png" id="1_fnuri"]
+
+[resource]
+albedo_texture = ExtResource("1_fnuri")
+roughness = 0.4
+uv1_triplanar = true
