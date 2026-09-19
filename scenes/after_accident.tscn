@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://gavu1pkllp4n" path="res://assets/nature-kit/canoe_paddle.glb" id="23_xxhha"]
 [ext_resource type="Script" uid="uid://k1dtc0cbf0gv" path="res://scripts/components/follow_fixed_component.gd" id="24_stk7a"]
 [ext_resource type="Script" uid="uid://da101qbaqut8x" path="res://scripts/puzzle01.gd" id="25_6c1mf"]
+[ext_resource type="PackedScene" uid="uid://bd7fhfo4fu3gr" path="res://assets/nature-kit/rock_smallFlatC.glb" id="25_ylq1t"]
 [ext_resource type="PackedScene" uid="uid://b8q2llpcky1qm" path="res://assets/nature-kit/tree_palmBend.glb" id="26_e7ymt"]
 [ext_resource type="PackedScene" uid="uid://bo45ox05rt2c0" path="res://assets/nature-kit/tree_palmDetailedShort.glb" id="27_xeeqk"]
 [ext_resource type="PackedScene" uid="uid://ddvthiwy6sor6" path="res://assets/nature-kit/canoe.glb" id="29_gp5wx"]
@@ -35,7 +36,6 @@ sky_material = SubResource("PanoramaSkyMaterial_vyf0d")
 background_mode = 2
 background_color = Color(0.08235294, 0.101960786, 0.1254902, 1)
 sky = SubResource("Sky_0q4gc")
-glow_enabled = true
 glow_mix = 0.0
 glow_bloom = 1.0
 glow_blend_mode = 0
@@ -524,3 +524,42 @@ light_energy = 0.0
 
 [node name="LightningAnimationPlayer" type="AnimationPlayer" parent="DirectionalLight3D2" unique_id=590267649]
 libraries/ = SubResource("AnimationLibrary_gp5wx")
+
+[node name="rock_smallFlatC2" parent="." unique_id=1799749638 instance=ExtResource("25_ylq1t")]
+transform = Transform3D(6, 0, 0, 0, 17, 0, 0, 0, 6, 9.898606, 0.24967818, 0.41145635)
+
+[node name="rock_smallFlatC3" parent="." unique_id=40912346 instance=ExtResource("25_ylq1t")]
+transform = Transform3D(6, 0, 0, 0, 17, 0, 0, 0, 6, 9.898606, 0.24967818, -0.8414738)
+
+[node name="rock_smallFlatC4" parent="." unique_id=98761059 instance=ExtResource("25_ylq1t")]
+transform = Transform3D(6, 0, 0, 0, 17, 0, 0, 0, 6, 9.898606, 0.24967818, 1.7267435)
+
+[node name="rock_smallFlatC5" parent="." unique_id=1791014612 instance=ExtResource("25_ylq1t")]
+transform = Transform3D(6, 0, 0, 0, 17, 0, 0, 0, 6, 19.500782, 0.24967818, 0.41145635)
+metadata/_edit_group_ = true
+
+[node name="rock_smallFlatC6" parent="." unique_id=2123793021 instance=ExtResource("25_ylq1t")]
+transform = Transform3D(6, 0, 0, 0, 17, 0, 0, 0, 6, 19.500782, 0.24967818, -0.8414738)
+metadata/_edit_group_ = true
+
+[node name="rock_smallFlatC7" parent="." unique_id=8817044 instance=ExtResource("25_ylq1t")]
+transform = Transform3D(6, 0, 0, 0, 17, 0, 0, 0, 6, 19.500782, 0.24967818, 1.7267435)
+metadata/_edit_group_ = true
+
+[node name="rock_smallFlatC8" parent="." unique_id=48681880 instance=ExtResource("25_ylq1t")]
+transform = Transform3D(6, 0, 0, 0, 24, 0, 0, 0, 6, 21.330427, 0.6448064, 0.41145635)
+
+[node name="rock_smallFlatC9" parent="." unique_id=752012183 instance=ExtResource("25_ylq1t")]
+transform = Transform3D(6, 0, 0, 0, 24, 0, 0, 0, 6, 21.330427, 0.6448064, -0.8414738)
+
+[node name="rock_smallFlatC10" parent="." unique_id=29561992 instance=ExtResource("25_ylq1t")]
+transform = Transform3D(6, 0, 0, 0, 24, 0, 0, 0, 6, 21.330427, 0.6448064, 1.7267435)
+
+[node name="rock_smallFlatC11" parent="." unique_id=1009832110 instance=ExtResource("25_ylq1t")]
+transform = Transform3D(6, 0, 0, 0, 30, 0, 0, 0, 6, 22.726261, 1.3075314, 0.41145635)
+
+[node name="rock_smallFlatC12" parent="." unique_id=248627626 instance=ExtResource("25_ylq1t")]
+transform = Transform3D(6, 0, 0, 0, 30, 0, 0, 0, 6, 22.726261, 1.3075314, -0.8414738)
+
+[node name="rock_smallFlatC13" parent="." unique_id=1289038305 instance=ExtResource("25_ylq1t")]
+transform = Transform3D(6, 0, 0, 0, 30, 0, 0, 0, 6, 22.726261, 1.3075314, 1.7267435)
